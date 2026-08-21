@@ -1,0 +1,7 @@
+Community_ID,City_Count,Cities,Average_AQI,Dominant_Pollutant,Summary
+0,8,"Aizawl, Kohima, Imphal, Shillong, Agartala, Guwahati, Itanagar, Gangtok",72.01886946788359,CO,Community 0 contains 8 cities led by Aizawl with average AQI of 72.0. Dominant pollutant is CO with weather averaging 20.4C and 0.27mm rainfall.
+1,14,"Raipur, Bhubaneswar, Visakhapatnam, Kolkata, Mumbai, Patna, Ranchi, Bengaluru, Panaji, Jaipur, Bhopal, Ahmedabad, Hyderabad, Lucknow",102.07182710521784,CO,Community 1 contains 14 cities led by Raipur with average AQI of 102.1. Dominant pollutant is CO with weather averaging 25.9C and 0.18mm rainfall.
+2,3,"Dehradun, Shimla, Chandigarh",94.07679237701625,CO,Community 2 contains 3 cities led by Dehradun with average AQI of 94.1. Dominant pollutant is CO with weather averaging 18.7C and 0.12mm rainfall.
+3,1,Chennai,74.3470983296022,CO,Community 3 contains 1 cities led by Chennai with average AQI of 74.3. Dominant pollutant is CO with weather averaging 28.2C and 0.19mm rainfall.
+4,2,"Delhi, Gurugram",191.18265885999654,CO,Community 4 contains 2 cities led by Delhi with average AQI of 191.2. Dominant pollutant is CO with weather averaging 24.5C and 0.10mm rainfall.
+5,1,Thiruvananthapuram,63.2288272774238,CO,Community 5 contains 1 cities led by Thiruvananthapuram with average AQI of 63.2. Dominant pollutant is CO with weather averaging 26.6C and 0.31mm rainfall.

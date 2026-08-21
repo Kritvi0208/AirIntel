@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="edge" attr.name="weight" attr.type="float" />
+  <graph edgedefault="undirected">
+    <node id="Agartala" />
+    <node id="Ahmedabad" />
+    <node id="Aizawl" />
+    <node id="Bengaluru" />
+    <node id="Bhopal" />
+    <node id="Bhubaneswar" />
+    <node id="Chandigarh" />
+    <node id="Chennai" />
+    <node id="Dehradun" />
+    <node id="Delhi" />
+    <node id="Gangtok" />
+    <node id="Gurugram" />
+    <node id="Guwahati" />
+    <node id="Hyderabad" />
+    <node id="Imphal" />
+    <node id="Itanagar" />
+    <node id="Jaipur" />
+    <node id="Kohima" />
+    <node id="Kolkata" />
+    <node id="Lucknow" />
+    <node id="Mumbai" />
+    <node id="Panaji" />
+    <node id="Patna" />
+    <node id="Raipur" />
+    <node id="Ranchi" />
+    <node id="Shillong" />
+    <node id="Shimla" />
+    <node id="Thiruvananthapuram" />
+    <node id="Visakhapatnam" />
+    <edge source="Agartala" target="Bhubaneswar">
+      <data key="d0">0.6624653642262205</data>
+    </edge>
+    <edge source="Agartala" target="Gangtok">
+      <data key="d0">0.7060909485776283</data>
+    </edge>
+    <edge source="Agartala" target="Guwahati">
+      <data key="d0">0.7759432208348322</data>
+    </edge>
+    <edge source="Agartala" target="Imphal">
+      <data key="d0">0.6711040494240051</data>
+    </edge>
+    <edge source="Agartala" target="Kohima">
+      <data key="d0">0.6657164695048786</data>
+    </edge>
+    <edge source="Agartala" target="Kolkata">
+      <data key="d0">0.7966651445317458</data>
+    </edge>
+    <edge source="Agartala" target="Patna">
+      <data key="d0">0.6731933461718936</data>
+    </edge>
+    <edge source="Agartala" target="Raipur">
+      <data key="d0">0.6963236804634488</data>
+    </edge>
+    <edge source="Agartala" target="Shillong">
+      <data key="d0">0.7480534140260586</data>
+    </edge>
+    <edge source="Ahmedabad" target="Bhopal">
+      <data key="d0">0.7321845219247789</data>
+    </edge>
+    <edge source="Ahmedabad" target="Mumbai">
+      <data key="d0">0.7480143025733154</data>
+    </edge>
+    <edge source="Aizawl" target="Gangtok">
+      <data key="d0">0.7574498248384174</data>
+    </edge>
+    <edge source="Aizawl" target="Guwahati">
+      <data key="d0">0.8104226239197929</data>
+    </edge>
+    <edge source="Aizawl" target="Imphal">
+      <data key="d0">0.8902433140802761</data>
+    </edge>
+    <edge source="Aizawl" target="Itanagar">
+      <data key="d0">0.7824197708143319</data>
+    </edge>
+    <edge source="Aizawl" target="Kohima">
+      <data key="d0">0.9221012029574914</data>
+    </edge>
+    <edge source="Aizawl" target="Shillong">
+      <data key="d0">0.8740302214351882</data>
+    </edge>
+    <edge source="Bengaluru" target="Hyderabad">
+      <data key="d0">0.7438569952243359</data>
+    </edge>
+    <edge source="Bhopal" target="Jaipur">
+      <data key="d0">0.7106487891168742</data>
+    </edge>
+    <edge source="Bhopal" target="Raipur">
+      <data key="d0">0.6941063262091833</data>
+    </edge>
+    <edge source="Bhopal" target="Ranchi">
+      <data key="d0">0.684062207784236</data>
+    </edge>
+    <edge source="Bhubaneswar" target="Hyderabad">
+      <data key="d0">0.6581619635671498</data>
+    </edge>
+    <edge source="Bhubaneswar" target="Kolkata">
+      <data key="d0">0.8681252066338325</data>
+    </edge>
+    <edge source="Bhubaneswar" target="Mumbai">
+      <data key="d0">0.6718135513887458</data>
+    </edge>
+    <edge source="Bhubaneswar" target="Patna">
+      <data key="d0">0.6735926874333079</data>
+    </edge>
+    <edge source="Bhubaneswar" target="Raipur">
+      <data key="d0">0.7189079626332922</data>
+    </edge>
+    <edge source="Bhubaneswar" target="Visakhapatnam">
+      <data key="d0">0.7919086169097428</data>
+    </edge>
+    <edge source="Chandigarh" target="Dehradun">
+      <data key="d0">0.7849025372782641</data>
+    </edge>
+    <edge source="Chandigarh" target="Shimla">
+      <data key="d0">0.7047215433050269</data>
+    </edge>
+    <edge source="Dehradun" target="Shimla">
+      <data key="d0">0.7846933263667253</data>
+    </edge>
+    <edge source="Delhi" target="Gurugram">
+      <data key="d0">0.8314000752686321</data>
+    </edge>
+    <edge source="Gangtok" target="Guwahati">
+      <data key="d0">0.8355362497326607</data>
+    </edge>
+    <edge source="Gangtok" target="Imphal">
+      <data key="d0">0.8092788516618966</data>
+    </edge>
+    <edge source="Gangtok" target="Itanagar">
+      <data key="d0">0.7152883517322536</data>
+    </edge>
+    <edge source="Gangtok" target="Kohima">
+      <data key="d0">0.8183197621005677</data>
+    </edge>
+    <edge source="Gangtok" target="Shillong">
+      <data key="d0">0.8200288562338769</data>
+    </edge>
+    <edge source="Guwahati" target="Imphal">
+      <data key="d0">0.8368284754825783</data>
+    </edge>
+    <edge source="Guwahati" target="Itanagar">
+      <data key="d0">0.753680033762955</data>
+    </edge>
+    <edge source="Guwahati" target="Kohima">
+      <data key="d0">0.8664839933675602</data>
+    </edge>
+    <edge source="Guwahati" target="Shillong">
+      <data key="d0">0.93795065039976</data>
+    </edge>
+    <edge source="Hyderabad" target="Panaji">
+      <data key="d0">0.7228347012399093</data>
+    </edge>
+    <edge source="Hyderabad" target="Raipur">
+      <data key="d0">0.7396335109126205</data>
+    </edge>
+    <edge source="Imphal" target="Itanagar">
+      <data key="d0">0.7725513991991839</data>
+    </edge>
+    <edge source="Imphal" target="Kohima">
+      <data key="d0">0.942673372786553</data>
+    </edge>
+    <edge source="Imphal" target="Shillong">
+      <data key="d0">0.8714670497421811</data>
+    </edge>
+    <edge source="Itanagar" target="Kohima">
+      <data key="d0">0.8328485781742828</data>
+    </edge>
+    <edge source="Itanagar" target="Shillong">
+      <data key="d0">0.80603602656677</data>
+    </edge>
+    <edge source="Kohima" target="Shillong">
+      <data key="d0">0.9166107280639524</data>
+    </edge>
+    <edge source="Kolkata" target="Mumbai">
+      <data key="d0">0.7143871372570226</data>
+    </edge>
+    <edge source="Kolkata" target="Patna">
+      <data key="d0">0.7270384410139471</data>
+    </edge>
+    <edge source="Kolkata" target="Raipur">
+      <data key="d0">0.723962215237182</data>
+    </edge>
+    <edge source="Kolkata" target="Ranchi">
+      <data key="d0">0.700799736191992</data>
+    </edge>
+    <edge source="Kolkata" target="Visakhapatnam">
+      <data key="d0">0.6768103530578611</data>
+    </edge>
+    <edge source="Lucknow" target="Patna">
+      <data key="d0">0.7969861046625147</data>
+    </edge>
+    <edge source="Lucknow" target="Raipur">
+      <data key="d0">0.6818865602628023</data>
+    </edge>
+    <edge source="Lucknow" target="Ranchi">
+      <data key="d0">0.7177550473764124</data>
+    </edge>
+    <edge source="Mumbai" target="Panaji">
+      <data key="d0">0.7444944632386897</data>
+    </edge>
+    <edge source="Mumbai" target="Raipur">
+      <data key="d0">0.6761835581815661</data>
+    </edge>
+    <edge source="Patna" target="Raipur">
+      <data key="d0">0.7419741406093251</data>
+    </edge>
+    <edge source="Patna" target="Ranchi">
+      <data key="d0">0.829233687484022</data>
+    </edge>
+    <edge source="Raipur" target="Ranchi">
+      <data key="d0">0.7588387913760166</data>
+    </edge>
+  </graph>
+</graphml>

@@ -1,0 +1,30 @@
+City,State,Cluster,Hierarchical_Cluster
+Agartala,Tripura,1,0
+Ahmedabad,Gujarat,1,0
+Aizawl,Mizoram,0,1
+Bengaluru,Karnataka,0,0
+Bhopal,Madhya Pradesh,1,0
+Bhubaneswar,Odisha,1,0
+Chandigarh,Punjab,1,0
+Chennai,Tamil Nadu,1,0
+Dehradun,Uttarakhand,0,0
+Delhi,Delhi,1,0
+Gangtok,Sikkim,0,1
+Gurugram,Haryana,1,0
+Guwahati,Assam,0,1
+Hyderabad,Telangana,1,0
+Imphal,Manipur,0,1
+Itanagar,Arunachal Pradesh,0,1
+Jaipur,Rajasthan,1,0
+Kohima,Nagaland,0,1
+Kolkata,West Bengal,1,0
+Lucknow,Uttar Pradesh,1,0
+Mumbai,Maharashtra,1,0
+Panaji,Goa,0,0
+Patna,Bihar,1,0
+Raipur,Chhattisgarh,1,0
+Ranchi,Jharkhand,1,0
+Shillong,Meghalaya,0,1
+Shimla,Himachal Pradesh,0,1
+Thiruvananthapuram,Kerala,0,0
+Visakhapatnam,Andhra Pradesh,1,0

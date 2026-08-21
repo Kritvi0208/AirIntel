@@ -1,0 +1,14 @@
+{
+  "engine": "AirIntel v1.0",
+  "request_format": {
+    "City": "string (required)",
+    "Temp_2m_C": "float (optional, range [-50, 60])",
+    "Humidity_Percent": "float (optional, range [0, 100])",
+    "Month": "int (optional, range [1, 12])",
+    "Hour": "int (optional, range [0, 23])"
+  },
+  "modes": [
+    "scientific",
+    "public"
+  ]
+}

@@ -1,0 +1,8 @@
+Metric,Value
+Severe Underprediction Rate,74.39%
+Clean Overprediction Rate,75.90%
+Highest Error City,Gurugram
+Highest Error City MAE,20.94
+Highest Error Season,Summer
+Highest Error Season MAE,15.70
+Robustness MAE Shift,1.1956

@@ -1,0 +1,3 @@
+Mode,Purpose,Prediction Available,Status
+Scientific,Full analytical predictions using measured pollutants,Yes,Production Ready
+Public,Deployment-ready interface for future weather-based forecasting,Deferred,Architecture Ready

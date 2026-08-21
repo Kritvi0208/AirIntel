@@ -1,0 +1,7 @@
+Metric,Value
+Best Model,Decision Tree
+Validation Accuracy,0.8353196185697158
+Validation F1,0.789944871957898
+Test Accuracy,0.8339619046106695
+Test F1,0.7827042811545293
+Average CV F1,0.7736090438684923

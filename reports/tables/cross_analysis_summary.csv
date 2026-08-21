@@ -1,0 +1,30 @@
+City,State,City Cluster ID,Average AQI,Region,Dominant Weather Regime,Dominant Pollutant,Average AirIntel Risk Score
+Agartala,Tripura,1,105.52929223351128,Other,Moderate/Clear,CO,20.749835543309796
+Ahmedabad,Gujarat,1,89.11727225762012,West,Moderate/Clear,CO,18.485143826416394
+Aizawl,Mizoram,0,59.562045806784916,Other,Moderate/Clear,CO,18.350092773089948
+Bengaluru,Karnataka,0,66.77124160495953,South,Moderate/Clear,CO,14.27737488089088
+Bhopal,Madhya Pradesh,1,85.03795419321509,Central,Moderate/Clear,CO,17.569087492107226
+Bhubaneswar,Odisha,1,103.73108317547788,East,Moderate/Clear,CO,19.857855794730497
+Chandigarh,Punjab,1,115.33800585500258,North,Moderate/Clear,CO,22.131899466161528
+Chennai,Tamil Nadu,1,74.3470983296022,South,Moderate/Clear,CO,14.82924496871592
+Dehradun,Uttarakhand,0,91.99280179094197,Other,Moderate/Clear,CO,21.411020308822685
+Delhi,Delhi,1,159.84363698983984,North,Moderate/Clear,CO,30.03335313701854
+Gangtok,Sikkim,0,65.99076976063371,Other,Moderate/Clear,CO,19.507285023821826
+Gurugram,Haryana,1,222.52168073015326,North,Moderate/Clear,CO,32.9252417542047
+Guwahati,Assam,0,87.50504563457896,East,Moderate/Clear,CO,19.86839396131106
+Hyderabad,Telangana,1,83.88203891854658,South,Moderate/Clear,CO,17.13765970954595
+Imphal,Manipur,0,71.03402789736525,Other,Moderate/Clear,CO,18.23887247574766
+Itanagar,Arunachal Pradesh,0,60.25365937661443,Other,Moderate/Clear,CO,18.052810148671146
+Jaipur,Rajasthan,1,103.27036335457207,North,Moderate/Clear,CO,21.531299546524313
+Kohima,Nagaland,0,60.00361632512485,Other,Moderate/Clear,CO,16.901622329372596
+Kolkata,West Bengal,1,122.45975546753918,East,Moderate/Clear,CO,23.601029607944433
+Lucknow,Uttar Pradesh,1,129.40557947304976,North,Moderate/Clear,CO,24.853885184547387
+Mumbai,Maharashtra,1,114.22899948338213,West,Moderate/Clear,CO,20.920189139544227
+Panaji,Goa,0,71.73380402961942,Other,Moderate/Clear,CO,15.245662258194134
+Patna,Bihar,1,132.85107628723955,East,Moderate/Clear,CO,24.842423534814305
+Raipur,Chhattisgarh,1,123.69416221801275,Central,Moderate/Clear,CO,23.679479616554733
+Ranchi,Jharkhand,1,100.32216290683658,Other,Moderate/Clear,CO,19.446276206876757
+Shillong,Meghalaya,0,66.27249870845532,Other,Moderate/Clear,CO,16.362587819298547
+Shimla,Himachal Pradesh,0,74.89956948510418,Other,Moderate/Clear,CO,19.2036343034269
+Thiruvananthapuram,Kerala,0,63.2288272774238,South,Moderate/Clear,CO,14.650395006027209
+Visakhapatnam,Andhra Pradesh,1,102.50008610297917,South,Moderate/Clear,CO,19.39326765398083

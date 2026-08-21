@@ -1,0 +1,8 @@
+Test,P-Value,Significant
+Independent t-Test,0.000992,True
+Mann-Whitney U,0.16401,False
+ANOVA,0.0,True
+Kruskal-Wallis,0.0,True
+Chi-Square,0.0,True
+Festival Period,0.0,True
+Crop Burning,0.0,True

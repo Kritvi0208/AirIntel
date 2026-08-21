@@ -1,0 +1,59 @@
+Category,Entity,Value
+Top 10 Polluted Cities,Gurugram,222.52
+Top 10 Polluted Cities,Delhi,159.84
+Top 10 Polluted Cities,Patna,132.85
+Top 10 Polluted Cities,Lucknow,129.41
+Top 10 Polluted Cities,Raipur,123.69
+Top 10 Polluted Cities,Kolkata,122.46
+Top 10 Polluted Cities,Chandigarh,115.34
+Top 10 Polluted Cities,Mumbai,114.23
+Top 10 Polluted Cities,Agartala,105.53
+Top 10 Polluted Cities,Bhubaneswar,103.73
+Top 10 Clean Cities,Aizawl,59.56
+Top 10 Clean Cities,Kohima,60.00
+Top 10 Clean Cities,Itanagar,60.25
+Top 10 Clean Cities,Thiruvananthapuram,63.23
+Top 10 Clean Cities,Gangtok,65.99
+Top 10 Clean Cities,Shillong,66.27
+Top 10 Clean Cities,Bengaluru,66.77
+Top 10 Clean Cities,Imphal,71.03
+Top 10 Clean Cities,Panaji,71.73
+Top 10 Clean Cities,Chennai,74.35
+Most Stable Cities,Itanagar,26.02
+Most Stable Cities,Shimla,26.67
+Most Stable Cities,Thiruvananthapuram,27.63
+Most Stable Cities,Chennai,27.78
+Most Stable Cities,Dehradun,29.85
+Most Stable Cities,Kohima,30.66
+Most Stable Cities,Gangtok,30.96
+Most Stable Cities,Imphal,31.05
+Most Stable Cities,Panaji,31.43
+Most Stable Cities,Bengaluru,32.16
+Highest Risk Cities,Gurugram,32.93
+Highest Risk Cities,Delhi,30.03
+Highest Risk Cities,Lucknow,24.85
+Highest Risk Cities,Patna,24.84
+Highest Risk Cities,Raipur,23.68
+Highest Risk Cities,Kolkata,23.60
+Highest Risk Cities,Chandigarh,22.13
+Highest Risk Cities,Jaipur,21.53
+Highest Risk Cities,Dehradun,21.41
+Highest Risk Cities,Mumbai,20.92
+Most Persistent Episode Cities,Gurugram,2604 Hours
+Most Persistent Episode Cities,Patna,1485 Hours
+Most Persistent Episode Cities,Kolkata,1451 Hours
+Most Persistent Episode Cities,Raipur,1186 Hours
+Most Persistent Episode Cities,Bhubaneswar,1173 Hours
+Most Persistent Episode Cities,Delhi,1122 Hours
+Most Persistent Episode Cities,Lucknow,1106 Hours
+Most Persistent Episode Cities,Chandigarh,763 Hours
+Most Persistent Episode Cities,Mumbai,639 Hours
+Most Persistent Episode Cities,Agartala,638 Hours
+Seasonal Summary,Monsoon,71.90
+Seasonal Summary,Post_Monsoon,102.14
+Seasonal Summary,Summer,109.25
+Seasonal Summary,Winter,118.26
+Weather Regime Summary,Humid/Overcast,70.88
+Weather Regime Summary,Moderate/Clear,109.89
+City Cluster Summary,Clean Air - Humid Coastal/Tropical (High Precipitation),69.94
+City Cluster Summary,Moderate Air - Hot Dry Inland (Low Precipitation),115.77

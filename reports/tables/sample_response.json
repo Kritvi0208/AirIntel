@@ -1,0 +1,49 @@
+{
+  "Prediction_Engine": "AirIntel v1.0",
+  "Model_Version": "v1.0",
+  "Pipeline_Version": "v1.0",
+  "Prediction_Time": "2026-07-23T17:41:25Z",
+  "Input_City": "Delhi",
+  "Prediction_Mode": "scientific",
+  "Predicted_US_AQI": 157.44,
+  "Predicted_AQI_Category": "Unhealthy",
+  "Prediction_Confidence": 0.4994,
+  "AirIntel_Risk_Score": 33.1,
+  "Risk_Level": "Moderate",
+  "Risk_Description": "Air quality is acceptable; moderate concern for sensitive individuals.",
+  "Health_Impact_Assessment": "Possible respiratory irritation in sensitive individuals (asthma, elderly, children).",
+  "Top_SHAP_Drivers": [
+    {
+      "Feature": "numerical__Northern_India",
+      "SHAP_Impact": 25.029901232468777
+    },
+    {
+      "Feature": "numerical__Temp_2m_C",
+      "SHAP_Impact": 17.365887471408712
+    },
+    {
+      "Feature": "categorical__Season_Monsoon",
+      "SHAP_Impact": -13.906684840942342
+    },
+    {
+      "Feature": "numerical__Surface_Pressure_hPa",
+      "SHAP_Impact": 10.784321894327448
+    },
+    {
+      "Feature": "numerical__Lat_Long_Interaction",
+      "SHAP_Impact": 10.414667597416473
+    }
+  ],
+  "Recommendations": {
+    "Environmental": [
+      "Maintain routine air quality monitoring networks.",
+      "Continue urban greening and bio-shield expansion."
+    ],
+    "Health": [
+      "Outdoor activities are safe for the general public."
+    ],
+    "Government": [
+      "Conduct routine emissions compliance inspections for industrial units."
+    ]
+  }
+}

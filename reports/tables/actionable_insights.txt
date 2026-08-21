@@ -1,0 +1,4 @@
+- EPISODE PERSISTENCE: Gurugram has the most persistent pollution episodes with a maximum duration of 2604 consecutive hours above 150 AQI. Priority monitoring stations must be deployed.
+- BENCHMARK: Aizawl (Mizoram) is identified as the cleanest and most stable city (Average AQI: 59.6, Std Dev: 34.8) and serves as the baseline control location.
+- COORDINATION: Community 0 contains 8 cities led by Aizawl with average AQI of 72.0. Dominant pollutant is CO with weather averaging 20.4C and 0.27mm rainfall. These cities should collaborate on joint regional emission reduction strategies.
+- COORDINATION: Community 1 contains 14 cities led by Raipur with average AQI of 102.1. Dominant pollutant is CO with weather averaging 25.9C and 0.18mm rainfall. These cities should collaborate on joint regional emission reduction strategies.

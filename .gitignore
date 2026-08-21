@@ -1,0 +1,59 @@
+# Python Bytecode & Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter & Notebook Checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+*-checkpoint.ipynb
+
+# CatBoost & Model Training Cache
+catboost_info/
+lightning_logs/
+
+# Heavy Raw & Processed Datasets (Exceeds GitHub 100MB limit)
+data/raw/*
+data/processed/*.csv
+data/processed/*.parquet
+data/external/*
+!data/.gitkeep
+!data/processed/.gitkeep
+!data/raw/.gitkeep
+
+# Large Intermediate Machine Learning Model Checkpoints
+models/*.pkl
+models/optimized/*.pkl
+!models/deployment/
+!models/deployment/deployment_pipeline.pkl
+!models/deployment/feature_metadata.json
+!models/deployment/prediction_schema.json
+!models/deployment/sample_request.json
+!models/deployment/sample_response.json
+!models/deployment/sample_response_public.json
+
+# Streamlit & OS Caches
+.streamlit/secrets.toml
+.DS_Store
+Thumbs.db
+*.tmp
+*.log

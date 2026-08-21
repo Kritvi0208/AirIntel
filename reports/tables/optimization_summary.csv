@@ -1,0 +1,9 @@
+Model,Baseline Metric,Optimized Metric,Improvement (%),Training Time,Inference Time,Feature Count
+HistGradient Boosting (Regression),0.8536,0.7707,-56.65%,23.42,0.0347,36
+LightGBM (Regression),0.8239,0.8449,11.91%,18.71,0.0425,36
+XGBoost (Regression),0.8091,0.7432,-34.52%,13.62,0.0231,36
+CatBoost (Regression),N/A,0.8136,Added,108.55,0.0324,36
+HistGradient Boosting (Classification),0.5960,0.6010,1.26%,68.08,0.0513,36
+LightGBM (Classification),0.6384,0.6305,-2.20%,43.44,0.0657,36
+XGBoost (Classification),0.5849,0.5619,-5.55%,24.59,0.0284,36
+CatBoost (Classification),N/A,0.6792,Added,164.51,0.0457,36

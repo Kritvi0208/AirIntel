@@ -1,0 +1,5 @@
+Comparison,Effect Size,Interpretation
+Weekend vs Weekday AQI,0.008,Negligible
+Festival vs Non-Festival AQI,0.125,Negligible
+Crop Burning Season,0.239,Small
+Seasonal PM2.5 (Eta²),0.129,Medium

@@ -1,0 +1,11 @@
+Metric,Value
+Rows,842160.0
+Columns,71.0
+Cities,29.0
+States,29.0
+Duplicate Rows,0.0
+Columns with Missing Values,18.0
+Negative Pollutant Values,88.0
+Constant Columns,1.0
+Quality Score,40.0
+Memory Usage (MB),856.94

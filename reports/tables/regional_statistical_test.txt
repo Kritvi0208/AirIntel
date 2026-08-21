@@ -1,0 +1,3 @@
+Kruskal-Wallis Test Statistic: 186343.7173
+p-value: 0.0000e+00
+Interpretation: Significant differences exist between regional AQI distributions (p < 0.05).

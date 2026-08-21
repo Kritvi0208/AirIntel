@@ -1,0 +1,9 @@
+Metric,Value
+Rows,842160
+Columns,248
+Cities,29
+States,29
+Numerical Columns,234
+Categorical Columns,14
+Datetime Range,2022-08-05 00:00:00  →  2025-11-26 23:00:00
+Memory Usage (MB),1986.17

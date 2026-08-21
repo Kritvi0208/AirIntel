@@ -1,0 +1,111 @@
+{
+  "engine": "AirIntel v1.0",
+  "version": "1.0.0",
+  "model_version": "v1.0",
+  "pipeline_version": "v1.0",
+  "selected_features": [
+    "Cloud_High_Percent",
+    "Temp_2m_C",
+    "Surface_Pressure_hPa",
+    "Wind_Category",
+    "Latitude_Band",
+    "Is_Raining",
+    "Days_in_Month",
+    "Day_of_Week",
+    "Weekday_Sin",
+    "Year",
+    "Month_Cos",
+    "Quarter",
+    "Longitude",
+    "Lat_Long_Interaction",
+    "Absolute_Latitude",
+    "Solar_Radiation_Wm2",
+    "Wind_Dir_10m",
+    "Weekday_Cos",
+    "Week_of_Month",
+    "Time_of_Day",
+    "Longitude_Band",
+    "Crop_Burning_Season",
+    "Month_Sin",
+    "Temp_Humidity",
+    "Is_Weekend",
+    "Wind_Stagnation",
+    "Sunshine_Seconds",
+    "Hour_Cos",
+    "Rain_mm",
+    "City",
+    "Festival_Period",
+    "Cloud_Cover_Percent",
+    "Northern_India",
+    "Season",
+    "Week",
+    "Latitude"
+  ],
+  "valid_cities": [
+    "Agartala",
+    "Ahmedabad",
+    "Aizawl",
+    "Bengaluru",
+    "Bhopal",
+    "Bhubaneswar",
+    "Chandigarh",
+    "Chennai",
+    "Dehradun",
+    "Delhi",
+    "Gangtok",
+    "Gurugram",
+    "Guwahati",
+    "Hyderabad",
+    "Imphal",
+    "Itanagar",
+    "Jaipur",
+    "Kohima",
+    "Kolkata",
+    "Lucknow",
+    "Mumbai",
+    "Panaji",
+    "Patna",
+    "Raipur",
+    "Ranchi",
+    "Shillong",
+    "Shimla",
+    "Thiruvananthapuram",
+    "Visakhapatnam"
+  ],
+  "valid_seasons": [
+    "Monsoon",
+    "Post_Monsoon",
+    "Winter",
+    "Summer"
+  ],
+  "numeric_ranges": {
+    "Temp_2m_C": [
+      -50.0,
+      60.0
+    ],
+    "Humidity_Percent": [
+      0.0,
+      100.0
+    ],
+    "Surface_Pressure_hPa": [
+      700.0,
+      1100.0
+    ],
+    "Wind_Speed_10m_kmh": [
+      0.0,
+      200.0
+    ],
+    "Rain_mm": [
+      0.0,
+      500.0
+    ],
+    "Cloud_Cover_Percent": [
+      0.0,
+      100.0
+    ],
+    "Solar_Radiation_Wm2": [
+      0.0,
+      1500.0
+    ]
+  }
+}

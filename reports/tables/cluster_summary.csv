@@ -1,0 +1,3 @@
+Cluster,Cluster Name,City Count,Cities,Mean AQI,Mean Temp,Mean Rainfall
+0,Clean Air - Humid Coastal/Tropical (High Precipitation),12,"Aizawl, Bengaluru, Dehradun, Gangtok, Guwahati, Imphal, Itanagar, Kohima, Panaji, Shillong, Shimla, Thiruvananthapuram",69.93732564146718,20.589310146923783,0.2515294995408632
+1,Moderate Air - Hot Dry Inland (Low Precipitation),17,"Agartala, Ahmedabad, Bhopal, Bhubaneswar, Chandigarh, Chennai, Delhi, Gurugram, Hyderabad, Jaipur, Kolkata, Lucknow, Mumbai, Patna, Raipur, Ranchi, Visakhapatnam",115.76942635156354,25.77370462647869,0.15987076648841358

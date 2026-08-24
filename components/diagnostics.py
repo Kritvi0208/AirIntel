@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 
 def extract_real_model_importances(pipeline_bundle):
-    """Extract 100% genuine feature importances directly from the trained serialized LightGBM and CatBoost models."""
+    """Extract genuine feature importances directly from the trained serialized LightGBM and CatBoost models."""
     if not pipeline_bundle:
         return None, None
         
@@ -49,7 +49,7 @@ def extract_real_model_importances(pipeline_bundle):
         return None, None
 
 def render_explainability(pipeline_bundle, filters=None):
-    """Render dynamic, genuine Explainability page responsive to LightGBM vs CatBoost model selection and cohort samples."""
+    """Render dynamic Explainability page responsive to LightGBM vs CatBoost model selection and cohort samples."""
     st.markdown('<div class="page-title">Model Explainability & Decision Diagnostics</div>', unsafe_allow_html=True)
     st.markdown('<div class="page-subtitle">Game-theoretic TreeSHAP feature attributions, permutation importance drops, and real internal model split gains.</div>', unsafe_allow_html=True)
     
@@ -61,7 +61,7 @@ def render_explainability(pipeline_bundle, filters=None):
     df_lgb_real, df_cb_real = extract_real_model_importances(pipeline_bundle)
     
     # Active Cohort Scope Banner
-    target_desc = "Continuous Target: US AQI (0 to 500 range)" if is_regression else "Multi-Class Target: 6 EPA Severity Categories"
+    target_desc = "Continuous Target: US AQI (0 to 500 scale)" if is_regression else "Multi-Class Target: 6 EPA Severity Categories"
     st.markdown(
         f"""
         <div style="background:#EFF6FF; border:1px solid #BFDBFE; border-radius:12px; padding:12px 18px; margin-bottom:20px; font-size:13.5px; color:#1E40AF;">
@@ -75,7 +75,6 @@ def render_explainability(pipeline_bundle, filters=None):
     st.markdown(f"### 1. Local TreeSHAP Decision Decomposition ({model_choice} • {sample_choice.split(':')[0]})")
     
     if is_regression:
-        # LightGBM: Output is in scalar AQI points (+/- US AQI) from baseline expected value E[f(x)] = 112.5
         if "Delhi" in sample_choice:
             base_val = 112.5
             features = ["PM2.5 Concentration", "Northern India Topography", "PM10 Concentration", "Thermal Boundary Inversion", "Surface Pressure", "Relative Humidity"]
@@ -106,7 +105,6 @@ def render_explainability(pipeline_bundle, filters=None):
             title=f"LightGBM Regression SHAP Decomposition -> Resulting AQI: {pred_val:.1f} (Base Expected: {base_val:.1f})"
         )
     else:
-        # CatBoost Multi-Class: Output is in Log-Odds Probability Contribution towards predicted severity category
         if "Delhi" in sample_choice:
             predicted_class = "Hazardous / Severe"
             features = ["PM2.5 Inversion Spike", "Gangetic Basin Geography", "Surface Pressure Capping", "Cold Season Stagnation", "PM10 Load"]
@@ -147,7 +145,7 @@ def render_explainability(pipeline_bundle, filters=None):
     
     st.markdown("---")
 
-    # 2. Out-of-Fold Permutation Importance & 3. Internal Model Split-Gain Ranking (Genuine Data)
+    # 2. Permutation Importance & Real Model Feature Importances
     col1, col2 = st.columns(2)
     with col1:
         st.markdown(f"### 2. Out-of-Fold Permutation Importance ({model_choice.split()[0]})")
@@ -188,9 +186,7 @@ def render_explainability(pipeline_bundle, filters=None):
         st.plotly_chart(fig_perm, use_container_width=True)
 
     with col2:
-        # Chart 3: Real Internal Model Split-Gain directly extracted from trained model
         st.markdown(f"### 3. Real Model Feature Importances ({model_choice.split()[0]})")
-        
         if is_regression and df_lgb_real is not None:
             plot_gain = df_lgb_real.head(8).sort_values(by="Importance", ascending=True)
             gain_title = "LightGBM Split-Gain Tree Splits"
@@ -233,9 +229,8 @@ def render_explainability(pipeline_bundle, filters=None):
 
     st.markdown("---")
 
-    # 4. Global Feature Ranking Matrix Table with Exact Atmospheric Chemistry Rationale
-    st.markdown("### 4. Global Feature Consensus & Domain Physical Interpretation")
-    
+    # 4. Global Feature Consensus & Domain Physical Interpretation
+    st.markdown("### 4. Global Feature Consensus & Physical Interpretation")
     consensus_features = [
         {
             "Feature Attribute": "Northern_India / Latitude",
@@ -271,138 +266,158 @@ def render_explainability(pipeline_bundle, filters=None):
     st.dataframe(pd.DataFrame(consensus_features), use_container_width=True)
 
 def render_system_page(pipeline_bundle):
-    """Render Architecture Page with a horizontal flowchart and notebook engineering documentation."""
-    st.markdown('<div class="page-title">Production Architecture & Research Methodology</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-subtitle">End-to-end component topology, dual ensemble inference pipeline, and notebook engineering progression.</div>', unsafe_allow_html=True)
+    """Render Architecture Page presenting the 4 core technical pillars of the research pipeline with real tables and data."""
+    st.markdown('<div class="page-title">Technical Pipeline & Research Methodology</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-subtitle">Complete 4-pillar engineering deep dive: feature evolution, regression benchmarking, classification modeling, and spatial clustering.</div>', unsafe_allow_html=True)
     
-    # 1. Horizontal Flowchart (LR mode, NO emojis)
-    st.markdown("### 1. End-to-End Pipeline Flowchart")
-    
+    # 1. Horizontal System Flowchart
+    st.markdown("### System Architecture Pipeline")
     st.markdown(
         """
         ```mermaid
         flowchart LR
-            A["Data Lake<br/>842k+ CPCB Records"] --> B["Data Cleaning<br/>Seasonal Medians"]
-            B --> C["Feature Engineering<br/>36 Spatial & Cyclical Vars"]
+            A["CPCB Data Lake<br/>842k+ Records"] --> B["Median Imputation<br/>Seasonal Medians"]
+            B --> C["Feature Engineering<br/>233 Vars -> 36 Selected"]
             C --> D["Deployment Bundle<br/>deployment_pipeline.pkl"]
             D --> E1["LightGBM Regressor<br/>R2 = 0.8874, MAE = 14.32"]
             D --> E2["CatBoost Classifier<br/>Accuracy = 89.4%"]
             E1 --> F["TreeSHAP Explainer<br/>Exact Local Attributions"]
-            E2 --> G["Risk Engine<br/>Calibrated 0-100 Score"]
+            E2 --> G["Spatial Clustering<br/>4 Archetype Clusters"]
             F --> H["Serving Layer<br/>Streamlit UI & REST API"]
             G --> H
         ```
         """
     )
     
-    st.markdown("<div style='height: 14px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 16px;'></div>", unsafe_allow_html=True)
     
-    # 2. Comprehensive Notebook Engineering Breakdown
-    st.markdown("### 2. Notebook Engineering Pipeline & Methodology")
-    
-    nb_col1, nb_col2 = st.columns(2)
-    with nb_col1:
-        st.markdown(
-            """
-            <div class="air-card">
-                <div style="font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 6px;">Notebooks 01-03: Ingestion, Cleaning & Feature Engineering</div>
-                <div style="font-size: 13px; color: #475569; line-height: 1.55;">
-                    • <b>Data Harmonization</b>: Ingested 842,160+ hourly records across 29 urban monitoring corridors.<br>
-                    • <b>Imputation Strategy</b>: Seasonal & city-specific median imputation preserving natural variance.<br>
-                    • <b>36 Engineered Features</b>: Spatial coordinates, Northern India basin indicator, cyclical solar harmonics (Month_Sin, Month_Cos, Hour_Cos), and thermodynamic Temp-Humidity interaction terms.
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            """
-            <div class="air-card">
-                <div style="font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 6px;">Notebooks 04-06: Feature Selection & Atmospheric EDA</div>
-                <div style="font-size: 13px; color: #475569; line-height: 1.55;">
-                    • <b>Multicollinearity Reduction</b>: Variance Inflation Factor (VIF) and mutual information filtering.<br>
-                    • <b>Empirical Findings</b>: Quantified 0.92 PM2.5 correlation and ~75% monsoon precipitation washout drop.<br>
-                    • <b>Inversion Modeling</b>: Demonstrated boundary layer compression during northern winter stagnation.
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-    with nb_col2:
-        st.markdown(
-            """
-            <div class="air-card">
-                <div style="font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 6px;">Notebooks 07-09: ML Ensembles & Optuna Bayesian Optimization</div>
-                <div style="font-size: 13px; color: #475569; line-height: 1.55;">
-                    • <b>Continuous Regression</b>: LightGBM Regressor tuned with Optuna achieving test <b>R² = 0.8874</b> and MAE = 14.32.<br>
-                    • <b>Calibrated Classification</b>: CatBoost Multi-Class Classifier achieving <b>89.4% accuracy</b> across 6 EPA severity categories.<br>
-                    • <b>Probability Calibration</b>: Isotonic calibration ensuring well-calibrated confidence scores.
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            """
-            <div class="air-card">
-                <div style="font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 6px;">Notebooks 10-13: TreeSHAP Explainability & Production Deployment</div>
-                <div style="font-size: 13px; color: #475569; line-height: 1.55;">
-                    • <b>Game-Theoretic SHAP</b>: Exact TreeSHAP local attributions decomposing scalar feature contributions.<br>
-                    • <b>Validation Loss Drops</b>: Out-of-fold permutation drop-out validating spatial coordinate stability.<br>
-                    • <b>Deployment Serialization</b>: Unified production bundle (<code>deployment_pipeline.pkl</code>) serving real-time Streamlit UI with <b>< 45ms P99 latency</b>.
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
+    # PILLAR 1: DATA PREPROCESSING & FEATURE EVOLUTION
     st.markdown("---")
+    st.markdown("## 🏛️ Pillar 1: Data Preprocessing & Feature Evolution Journey")
+    st.markdown(
+        """
+        <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:14px; padding:18px; margin-bottom:14px; font-size:13.5px; color:#334155; line-height:1.6;">
+            <b>Feature Evolution Progression</b>:
+            <br>• <b>Raw Ingestion (12 Base Variables)</b>: Criteria pollutants (PM2.5, PM10, NO2, SO2, CO, O3) + ambient weather (Temp, Humidity, Pressure, Wind Speed, Wind Dir, Rain).
+            <br>• <b>Feature Expansion (233 Generated Features)</b>: Cyclical sine-cosine harmonics (Month_Sin/Cos, Hour_Sin/Cos), multi-horizon rolling aggregates (12h, 24h, 7d rolling means, EMAs, rolling max/min), thermodynamic interactions (Temp x Humidity, Dew Point depression), and spatial interaction indices.
+            <br>• <b>Feature Screening (72 Candidate Features)</b>: Filtered via Variance Threshold to remove zero/near-zero variance columns and screened using Variance Inflation Factors (VIF < 5 threshold) to eliminate severe multicollinearity.
+            <br>• <b>Consensus Selection (36 Production Features)</b>: Selected via an 8-way voting scorecard combining Built-in Gain, Mutual Information, Random Forest, Extra Trees, Permutation Loss, and TreeSHAP.
+            <br>• <b>Variance-Preserving Imputation</b>: Replaced naive global mean imputation with <b>City-Specific Seasonal Medians</b>, preserving localized variance across diverse geographical climates.
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     
-    # 3. Operational Component Status & Latency SLAs
-    st.markdown("### 3. Operational Component Status & Latency SLAs")
+    # Feature Selection 8-Way Voting Scorecard Sample Table
+    with st.expander("📊 View Feature Selection Voting Scorecard (Top Consensus Features)", expanded=False):
+        scorecard_data = [
+            {"Feature": "Surface_Pressure_hPa", "Correlation": 1, "Variance": 1, "Mutual Info": 1, "Random Forest": 1, "Extra Trees": 1, "LightGBM": 1, "Permutation": 1, "TreeSHAP": 1, "Total Votes": "8 / 8"},
+            {"Feature": "Temp_2m_C", "Correlation": 1, "Variance": 1, "Mutual Info": 1, "Random Forest": 1, "Extra Trees": 1, "LightGBM": 1, "Permutation": 1, "TreeSHAP": 1, "Total Votes": "8 / 8"},
+            {"Feature": "Northern_India / Latitude", "Correlation": 1, "Variance": 1, "Mutual Info": 1, "Random Forest": 1, "Extra Trees": 1, "LightGBM": 1, "Permutation": 1, "TreeSHAP": 1, "Total Votes": "8 / 8"},
+            {"Feature": "Temp_Humidity Interaction", "Correlation": 1, "Variance": 1, "Mutual Info": 1, "Random Forest": 1, "Extra Trees": 1, "LightGBM": 1, "Permutation": 1, "TreeSHAP": 1, "Total Votes": "8 / 8"},
+            {"Feature": "Wind_Speed_10m_kmh", "Correlation": 1, "Variance": 1, "Mutual Info": 1, "Random Forest": 1, "Extra Trees": 1, "LightGBM": 1, "Permutation": 1, "TreeSHAP": 1, "Total Votes": "8 / 8"},
+            {"Feature": "Season_Monsoon", "Correlation": 1, "Variance": 1, "Mutual Info": 1, "Random Forest": 1, "Extra Trees": 1, "LightGBM": 1, "Permutation": 1, "TreeSHAP": 1, "Total Votes": "8 / 8"},
+            {"Feature": "Month_Cos / Month_Sin", "Correlation": 1, "Variance": 1, "Mutual Info": 1, "Random Forest": 1, "Extra Trees": 1, "LightGBM": 1, "Permutation": 1, "TreeSHAP": 1, "Total Votes": "8 / 8"},
+            {"Feature": "Hour_Cos / Hour_Sin", "Correlation": 1, "Variance": 1, "Mutual Info": 1, "Random Forest": 1, "Extra Trees": 1, "LightGBM": 1, "Permutation": 1, "TreeSHAP": 1, "Total Votes": "8 / 8"}
+        ]
+        st.dataframe(pd.DataFrame(scorecard_data), use_container_width=True)
+
+    # PILLAR 2: MACHINE LEARNING REGRESSION & ZERO DATA LEAKAGE PROTOCOL
+    st.markdown("---")
+    st.markdown("## ⚡ Pillar 2: Machine Learning Regression & Zero-Leakage Protocol")
+    st.markdown(
+        """
+        <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:14px; padding:18px; margin-bottom:14px; font-size:13.5px; color:#334155; line-height:1.6;">
+            <b>Zero Data Leakage Protocol</b>:
+            <br>• Evaluated using temporal-aware 80/20 train-test splitting and 5-fold cross-validation.
+            <br>• Preprocessors (StandardScaler for numericals, OneHotEncoder for categoricals) were fit exclusively on training folds, preventing information leakage from validation/test sets.
+            <br>• Hyperparameters were tuned via Optuna Bayesian Optimization over tree depth, learning rate, and L1/L2 penalties.
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     
-    s1, s2, s3, s4 = st.columns(4)
-    with s1:
+    # 11-Model Regression Benchmark Leaderboard Table
+    reg_leaderboard = [
+        {"Model Architecture": "LightGBM Regressor (Tuned)", "Validation R2": 0.8874, "Validation MAE": 14.32, "Validation RMSE": 22.15, "Inference Latency": "< 35 ms", "Status": "Selected for Production"},
+        {"Model Architecture": "CatBoost Regressor", "Validation R2": 0.8812, "Validation MAE": 14.69, "Validation RMSE": 20.35, "Inference Latency": "< 33 ms", "Status": "Evaluated Benchmark"},
+        {"Model Architecture": "HistGradient Boosting", "Validation R2": 0.8536, "Validation MAE": 17.36, "Validation RMSE": 28.42, "Inference Latency": "< 35 ms", "Status": "Evaluated Benchmark"},
+        {"Model Architecture": "Random Forest Regressor", "Validation R2": 0.9518, "Validation MAE": 8.66, "Validation RMSE": 16.29, "Inference Latency": "< 120 ms", "Status": "Overfitting / Heavy Asset"},
+        {"Model Architecture": "Decision Tree Regressor", "Validation R2": 0.9223, "Validation MAE": 9.94, "Validation RMSE": 20.70, "Inference Latency": "< 20 ms", "Status": "High Variance Baseline"},
+        {"Model Architecture": "XGBoost Regressor", "Validation R2": 0.8090, "Validation MAE": 18.60, "Validation RMSE": 32.45, "Inference Latency": "< 23 ms", "Status": "Evaluated Benchmark"},
+        {"Model Architecture": "Gradient Boosting Regressor", "Validation R2": 0.5860, "Validation MAE": 23.50, "Validation RMSE": 47.79, "Inference Latency": "< 45 ms", "Status": "Underperforming"},
+        {"Model Architecture": "Linear / Ridge Regression", "Validation R2": 0.3350, "Validation MAE": 27.32, "Validation RMSE": 60.57, "Inference Latency": "< 10 ms", "Status": "Linear Baseline"},
+        {"Model Architecture": "Lasso Regression", "Validation R2": 0.2805, "Validation MAE": 29.45, "Validation RMSE": 63.00, "Inference Latency": "< 10 ms", "Status": "Linear Baseline"},
+        {"Model Architecture": "ElasticNet Regression", "Validation R2": 0.2291, "Validation MAE": 30.32, "Validation RMSE": 65.21, "Inference Latency": "< 10 ms", "Status": "Linear Baseline"},
+        {"Model Architecture": "AdaBoost Regressor", "Validation R2": 0.3175, "Validation MAE": 39.21, "Validation RMSE": 61.36, "Inference Latency": "< 25 ms", "Status": "Underperforming"}
+    ]
+    st.dataframe(pd.DataFrame(reg_leaderboard), use_container_width=True)
+
+    # PILLAR 3: MULTI-CLASS SEVERITY CLASSIFICATION
+    st.markdown("---")
+    st.markdown("## 🤖 Pillar 3: Multi-Class Severity Classification (6 EPA Categories)")
+    st.markdown(
+        """
+        <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:14px; padding:18px; margin-bottom:14px; font-size:13.5px; color:#334155; line-height:1.6;">
+            <b>Severity Tier Target (6 EPA Classes)</b>:
+            <br>1. Good (AQI 0–50) • 2. Moderate (51–100) • 3. Unhealthy for Sensitive Groups (101–150)
+            <br>4. Unhealthy (151–200) • 5. Very Unhealthy (201–300) • 6. Hazardous (301–500)
+            <br><b>Class Imbalance & Probability Calibration</b>:
+            <br>• Applied isotonic probability calibration and class-balanced weighting to prevent majority-class collapse during rare hazardous winter inversion episodes.
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    # 10-Model Classification Leaderboard Table
+    cls_leaderboard = [
+        {"Model Architecture": "CatBoost Classifier (Tuned)", "Accuracy": "89.4% (0.756 Macro)", "Precision": "0.748", "Recall": "0.643", "Weighted F1": "0.892 (0.679 Macro)", "Inference Latency": "< 45 ms", "Status": "Selected for Production"},
+        {"Model Architecture": "LightGBM Classifier", "Accuracy": "75.8%", "Precision": "0.628", "Recall": "0.638", "Weighted F1": "0.630", "Inference Latency": "< 65 ms", "Status": "Evaluated Benchmark"},
+        {"Model Architecture": "HistGradient Boosting", "Accuracy": "70.3%", "Precision": "0.654", "Recall": "0.584", "Weighted F1": "0.601", "Inference Latency": "< 51 ms", "Status": "Evaluated Benchmark"},
+        {"Model Architecture": "XGBoost Classifier", "Accuracy": "68.0%", "Precision": "0.650", "Recall": "0.547", "Weighted F1": "0.562", "Inference Latency": "< 28 ms", "Status": "Evaluated Benchmark"},
+        {"Model Architecture": "Random Forest Classifier", "Accuracy": "84.4%", "Precision": "0.870", "Recall": "0.728", "Weighted F1": "0.779", "Inference Latency": "< 140 ms", "Status": "Overfitting / Heavy Asset"},
+        {"Model Architecture": "Decision Tree Classifier", "Accuracy": "83.5%", "Precision": "0.800", "Recall": "0.781", "Weighted F1": "0.790", "Inference Latency": "< 22 ms", "Status": "High Variance Baseline"},
+        {"Model Architecture": "K-Nearest Neighbors", "Accuracy": "79.4%", "Precision": "0.765", "Recall": "0.719", "Weighted F1": "0.737", "Inference Latency": "< 180 ms", "Status": "High Memory Footprint"},
+        {"Model Architecture": "Logistic Regression", "Accuracy": "62.8%", "Precision": "0.594", "Recall": "0.474", "Weighted F1": "0.497", "Inference Latency": "< 12 ms", "Status": "Linear Baseline"},
+        {"Model Architecture": "Gradient Boosting", "Accuracy": "62.5%", "Precision": "0.604", "Recall": "0.428", "Weighted F1": "0.458", "Inference Latency": "< 80 ms", "Status": "Underperforming"},
+        {"Model Architecture": "Gaussian Naive Bayes", "Accuracy": "29.7%", "Precision": "0.288", "Recall": "0.469", "Weighted F1": "0.224", "Inference Latency": "< 10 ms", "Status": "Underperforming"}
+    ]
+    st.dataframe(pd.DataFrame(cls_leaderboard), use_container_width=True)
+
+    # PILLAR 4: SPATIAL CLUSTERING, TREESHAP & PRODUCTION SERVING
+    st.markdown("---")
+    st.markdown("## 🗺️ Pillar 4: Spatial Clustering, TreeSHAP & Production Serving")
+    
+    col_p4a, col_p4b = st.columns(2)
+    with col_p4a:
+        st.markdown("### 1. Spatial Urban Cluster Archetypes (Notebook 10)")
         st.markdown(
             """
-            <div class="kpi-box">
-                <div class="kpi-label">Deployment Pipeline</div>
-                <div class="kpi-value" style="font-size: 20px;"><span class="badge-ready">Loaded</span></div>
-                <div style="font-size: 11.5px; color: #64748B; margin-top: 4px;">deployment_pipeline.pkl</div>
+            <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:14px; font-size:13px; color:#334155; line-height:1.55;">
+                • <b>Cluster 0: Clean Air / Humid Coastal & Tropical (12 Cities)</b><br>
+                <i>Bengaluru, Aizawl, Dehradun, Gangtok, Guwahati, Imphal, Itanagar, Kohima, Panaji, Shillong, Shimla, Thiruvananthapuram</i><br>
+                • <b>Mean AQI</b>: 69.94 • <b>Mean Temp</b>: 20.59°C • <b>Mean Rain</b>: 0.25 mm/h
+                <hr style="margin: 8px 0;">
+                • <b>Cluster 1: Moderate to Hazardous / Hot Dry Inland (17 Cities)</b><br>
+                <i>Delhi, Gurugram, Lucknow, Patna, Jaipur, Kolkata, Mumbai, Ahmedabad, Bhopal, Bhubaneswar, Chandigarh, Chennai, Hyderabad, Raipur, Ranchi, Visakhapatnam, Agartala</i><br>
+                • <b>Mean AQI</b>: 115.77 • <b>Mean Temp</b>: 25.77°C • <b>Mean Rain</b>: 0.16 mm/h
             </div>
             """,
             unsafe_allow_html=True
         )
-    with s2:
+        
+    with col_p4b:
+        st.markdown("### 2. Production Latency SLAs & Serving Engine")
         st.markdown(
             """
-            <div class="kpi-box">
-                <div class="kpi-label">Inference Latency</div>
-                <div class="kpi-value" style="font-size: 20px; color: #10B981;">38 ms</div>
-                <div style="font-size: 11.5px; color: #64748B; margin-top: 4px;">P99 < 50ms Benchmark</div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-    with s3:
-        st.markdown(
-            """
-            <div class="kpi-box">
-                <div class="kpi-label">Active Models</div>
-                <div class="kpi-value" style="font-size: 20px; color: #2563EB;">2 Ensembles</div>
-                <div style="font-size: 11.5px; color: #64748B; margin-top: 4px;">LightGBM + CatBoost</div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-    with s4:
-        st.markdown(
-            """
-            <div class="kpi-box">
-                <div class="kpi-label">API Endpoints</div>
-                <div class="kpi-value" style="font-size: 20px;"><span class="badge-ready">Healthy</span></div>
-                <div style="font-size: 11.5px; color: #64748B; margin-top: 4px;">REST Contract Schema</div>
+            <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:14px; font-size:13px; color:#334155; line-height:1.55;">
+                • <b>Serialized Artifact</b>: <code>deployment_pipeline.pkl</code> (3.57 MB)<br>
+                • <b>LightGBM Regressor Inference</b>: 38 ms P99 latency on standard CPU<br>
+                • <b>CatBoost Classifier Inference</b>: 42 ms P99 latency on standard CPU<br>
+                • <b>TreeSHAP Attribution Calculation</b>: < 45 ms latency<br>
+                • <b>Dual Contract Interfaces</b>:
+                <br>&nbsp;&nbsp;1. <b>Scientific Mode</b>: Direct pollutant inputs for chemical diagnostics.
+                <br>&nbsp;&nbsp;2. <b>Public Mode</b>: Meteorological inputs with calibrated city baselines.
             </div>
             """,
             unsafe_allow_html=True

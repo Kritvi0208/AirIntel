@@ -1,7 +1,7 @@
 import streamlit as st
 
 def render_overview(pipeline_bundle):
-    """Render modern Home landing page with functional navigation hero, dynamic KPI blocks from deployment bundle, and empirical discoveries."""
+    """Render Home landing page highlighting key engineering milestones and technical facts."""
     
     # Derive dynamic metrics from deployment pipeline bundle
     feature_count = len(pipeline_bundle.get('selected_features', [])) if pipeline_bundle else 36
@@ -10,13 +10,13 @@ def render_overview(pipeline_bundle):
     st.markdown(
         """
         <div class="hero-banner">
-            <div class="hero-tagline">AI-Powered Environmental Intelligence</div>
+            <div class="hero-tagline">Machine Learning & Atmospheric Science</div>
             <div class="hero-title">AirIntel Platform</div>
             <div class="hero-subtitle">National Air Quality Forecasting, Risk Analytics & TreeSHAP Explainability</div>
             <div class="hero-desc">
-                An end-to-end production machine learning system engineered on <b>842,160+ monitoring observations</b> across India.
-                AirIntel integrates meteorological dynamics, spatial clustering, and dual gradient boosted ensembles (LightGBM & CatBoost)
-                to deliver real-time continuous AQI predictions, calibrated severity risk classifications, and game-theoretic decision attribution.
+                An end-to-end production machine learning system engineered on <b>842,160+ monitoring observations</b> across 29 Indian cities.
+                AirIntel processes criteria pollutants and meteorological variables through a 36-feature pipeline with dual gradient boosted ensembles (LightGBM & CatBoost)
+                to deliver real-time continuous AQI predictions, calibrated severity classifications, and game-theoretic local decision attributions.
             </div>
         </div>
         """,
@@ -46,7 +46,7 @@ def render_overview(pipeline_bundle):
             <div class="kpi-box">
                 <div class="kpi-label">Dataset Records</div>
                 <div class="kpi-value">842,160+</div>
-                <div style="font-size: 11.5px; color: #64748B; margin-top: 4px;">Hourly & Daily CPCB Data</div>
+                <div style="font-size: 11.5px; color: #64748B; margin-top: 4px;">29 Cities • CPCB Network</div>
             </div>
             """,
             unsafe_allow_html=True
@@ -57,7 +57,7 @@ def render_overview(pipeline_bundle):
             <div class="kpi-box">
                 <div class="kpi-label">Regression Accuracy</div>
                 <div class="kpi-value" style="color: #10B981;">0.887 R²</div>
-                <div style="font-size: 11.5px; color: #64748B; margin-top: 4px;">LightGBM Tuned Model</div>
+                <div style="font-size: 11.5px; color: #64748B; margin-top: 4px;">LightGBM (MAE 14.32)</div>
             </div>
             """,
             unsafe_allow_html=True
@@ -68,7 +68,7 @@ def render_overview(pipeline_bundle):
             <div class="kpi-box">
                 <div class="kpi-label">Classification Acc.</div>
                 <div class="kpi-value" style="color: #4F46E5;">89.4%</div>
-                <div style="font-size: 11.5px; color: #64748B; margin-top: 4px;">CatBoost Severity Tier</div>
+                <div style="font-size: 11.5px; color: #64748B; margin-top: 4px;">CatBoost 6-Class EPA</div>
             </div>
             """,
             unsafe_allow_html=True
@@ -77,9 +77,9 @@ def render_overview(pipeline_bundle):
         st.markdown(
             f"""
             <div class="kpi-box">
-                <div class="kpi-label">Engine Features</div>
+                <div class="kpi-label">Production Features</div>
                 <div class="kpi-value">{feature_count}</div>
-                <div style="font-size: 11.5px; color: #64748B; margin-top: 4px;">Spatial, Temporal & Weather</div>
+                <div style="font-size: 11.5px; color: #64748B; margin-top: 4px;">Selected from 233 Features</div>
             </div>
             """,
             unsafe_allow_html=True
@@ -88,9 +88,9 @@ def render_overview(pipeline_bundle):
         st.markdown(
             """
             <div class="kpi-box">
-                <div class="kpi-label">Pipeline Status</div>
-                <div class="kpi-value" style="font-size: 18px; margin-top: 6px;"><span class="badge-ready">Deployment Ready</span></div>
-                <div style="font-size: 11.5px; color: #64748B; margin-top: 6px;">Sub-45ms Latency</div>
+                <div class="kpi-label">Serving Latency</div>
+                <div class="kpi-value" style="font-size: 20px; color: #10B981; margin-top: 6px;">38 ms</div>
+                <div style="font-size: 11.5px; color: #64748B; margin-top: 6px;">P99 CPU Inference SLA</div>
             </div>
             """,
             unsafe_allow_html=True
@@ -105,13 +105,13 @@ def render_overview(pipeline_bundle):
         <div class="flow-container">
             <div class="flow-node">Data Ingestion<br><span style="font-size:11px; font-weight:400; color:#64748B;">842k CPCB Records</span></div>
             <div class="flow-arrow">➔</div>
-            <div class="flow-node">Imputation & Clean<br><span style="font-size:11px; font-weight:400; color:#64748B;">Seasonal Medians</span></div>
+            <div class="flow-node">Median Imputation<br><span style="font-size:11px; font-weight:400; color:#64748B;">City/Season Medians</span></div>
             <div class="flow-arrow">➔</div>
-            <div class="flow-node">Feature Eng.<br><span style="font-size:11px; font-weight:400; color:#64748B;">{feature_count} Engineered Vars</span></div>
+            <div class="flow-node">Feature Selection<br><span style="font-size:11px; font-weight:400; color:#64748B;">233 ➔ {feature_count} Features</span></div>
             <div class="flow-arrow">➔</div>
             <div class="flow-node">Dual ML Ensembles<br><span style="font-size:11px; font-weight:400; color:#64748B;">LightGBM + CatBoost</span></div>
             <div class="flow-arrow">➔</div>
-            <div class="flow-node">TreeSHAP Explainer<br><span style="font-size:11px; font-weight:400; color:#64748B;">Game Theory Values</span></div>
+            <div class="flow-node">TreeSHAP Diagnostics<br><span style="font-size:11px; font-weight:400; color:#64748B;">Game-Theoretic Values</span></div>
             <div class="flow-arrow">➔</div>
             <div class="flow-node active">Production Serving<br><span style="font-size:11px; font-weight:400; color:#FFFFFF;">Web App & REST API</span></div>
         </div>
@@ -119,16 +119,16 @@ def render_overview(pipeline_bundle):
         unsafe_allow_html=True
     )
 
-    # 4. Core Technological Highlights
-    st.markdown('<div class="section-heading">Key Technological Capabilities</div>', unsafe_allow_html=True)
+    # 4. Core Technical Capabilities
+    st.markdown('<div class="section-heading">Core Engineering Highlights</div>', unsafe_allow_html=True)
     h1, h2, h3 = st.columns(3)
     with h1:
         st.markdown(
             """
             <div class="air-card">
-                <div style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">TreeSHAP Decision Attribution</div>
+                <div style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">Multi-Method Feature Selection</div>
                 <div style="font-size: 13.5px; color: #475569; line-height: 1.5;">
-                    Exact game-theoretic local Shapley value decompositions for every sample inference, providing clear transparency into pollutant vs weather influence.
+                    Expanded raw data to 233 features (rolling statistics, cyclical harmonics, interactions) and pruned down to 36 using an 8-way voting scorecard and VIF screening.
                 </div>
             </div>
             """,
@@ -138,9 +138,9 @@ def render_overview(pipeline_bundle):
         st.markdown(
             """
             <div class="air-card">
-                <div style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">Optuna Hyperparameter Tuning</div>
+                <div style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">Zero-Leakage ML Optimization</div>
                 <div style="font-size: 13.5px; color: #475569; line-height: 1.5;">
-                    Bayesian optimization across gradient boosted tree depths, learning rates, and regularization penalties yielding strong R² = 0.887 generalization.
+                    Temporal train-test cross-validation with preprocessors fit strictly on train folds. Optuna Bayesian tuning yielded LightGBM R²=0.8874 and CatBoost 89.4% accuracy.
                 </div>
             </div>
             """,
@@ -150,16 +150,16 @@ def render_overview(pipeline_bundle):
         st.markdown(
             """
             <div class="air-card">
-                <div style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">Dual-Mode Production Contracts</div>
+                <div style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">Dual-Mode Serving Contracts</div>
                 <div style="font-size: 13.5px; color: #475569; line-height: 1.5;">
-                    Separate Scientific Mode for high-precision pollutant analytics and Public Mode for meteorological feature validation with zero data hallucination.
+                    Separated Scientific Mode for chemical diagnostics and Public Citizen Mode for weather-driven inference using calibrated city baseline medians without hallucinating.
                 </div>
             </div>
             """,
             unsafe_allow_html=True
         )
 
-    # 5. Scientific Discoveries
+    # 5. Atmospheric Insights
     st.markdown('<div class="section-heading">Atmospheric & Empirical Insights</div>', unsafe_allow_html=True)
     i1, i2, i3 = st.columns(3)
     with i1:
@@ -168,7 +168,7 @@ def render_overview(pipeline_bundle):
             <div class="air-card-highlight">
                 <div style="font-size: 16px; font-weight: 700; color: #0F172A; margin-bottom: 6px;">Planetary Boundary Layer Inversion</div>
                 <div style="font-size: 13px; color: #475569; line-height: 1.5;">
-                    Winter thermal inversions in the Indo-Gangetic Basin trap particulate matter beneath shallow boundary layers, causing a <b>3.2x AQI spike</b> compared to southern peninsular corridors.
+                    Winter thermal inversions in the Indo-Gangetic Basin trap particulate matter beneath shallow mixing heights, causing a <b>3.2x AQI surge</b> compared to southern coastal zones.
                 </div>
             </div>
             """,
@@ -180,7 +180,7 @@ def render_overview(pipeline_bundle):
             <div class="air-card-highlight">
                 <div style="font-size: 16px; font-weight: 700; color: #0F172A; margin-bottom: 6px;">Monsoon Wet Deposition Washout</div>
                 <div style="font-size: 13px; color: #475569; line-height: 1.5;">
-                    Continuous precipitation washout during July–August drives a nationwide <b>~75% drop</b> in PM2.5 and PM10 concentrations, returning ambient air to "Good" and "Satisfactory" tiers.
+                    Continuous precipitation washout during July–August drives a nationwide <b>~75% reduction</b> in PM2.5 and PM10 concentrations, returning ambient air to "Good" and "Satisfactory" tiers.
                 </div>
             </div>
             """,

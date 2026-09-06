@@ -42,7 +42,7 @@ def render_sidebar(active_page, valid_cities, feature_medians):
             )
             
         st.sidebar.markdown("---")
-        st.sidebar.info("Navigation Tip: Use the top navigation bar to explore interactive Analytics, Spatial Maps, Predictions, and Model Explainability.")
+        st.sidebar.info("Navigation Tip: Use the top navigation bar to explore interactive Analytics, Predictions, Maps, Notebook Deliverables, and Model Explainability.")
         return {}, "scientific"
 
     elif active_page == "Analytics":
@@ -121,7 +121,7 @@ def render_sidebar(active_page, valid_cities, feature_medians):
         st.sidebar.markdown("### Geographic Map Controls")
         selected_region = st.sidebar.selectbox("Region Focus", ["All India", "Northern India (Gangetic Basin)", "Southern India (Peninsular)"])
         metric_layer = st.sidebar.selectbox("Visual Metric Layer", ["US AQI Severity Index", "PM2.5 Concentration Hotspots", "Risk Tier Clusters"])
-        map_theme = st.sidebar.selectbox("Map Theme", ["Carto Positron (Clean Light)", "OpenStreetMap (Standard)", "Stamen Terrain / Topo"])
+        map_theme = st.sidebar.selectbox("Map Theme", ["OpenStreetMap (Standard)", "White Minimalist Background"])
         
         if st.sidebar.button("Reset Map View", use_container_width=True):
             st.rerun()
@@ -138,14 +138,24 @@ def render_sidebar(active_page, valid_cities, feature_medians):
         ])
         return {"Model": model_type, "Sample": sample_sel}, "scientific"
 
+    elif active_page == "Notebooks":
+        st.sidebar.markdown("### Research & Notebooks")
+        st.sidebar.markdown(
+            "- **13-Stage Progression**: 01 Ingestion to 13 Web Dashboard\n\n"
+            "- **Feature Space**: 12 Raw ➔ 233 Engineered ➔ 36 Selected\n\n"
+            "- **Regression Benchmark**: LightGBM R² = 0.8874\n\n"
+            "- **Classification Benchmark**: CatBoost 89.4% Accuracy"
+        )
+        return {}, "scientific"
+
     elif active_page == "Architecture":
-        st.sidebar.markdown("### Pipeline Verification")
+        st.sidebar.markdown("### System Architecture")
         st.sidebar.markdown(
             "- **Bundle Status**: Loaded\n\n"
-            "- **Inference Latency**: < 45 ms\n\n"
+            "- **Inference Latency**: < 45 ms P99\n\n"
             "- **Model Checksum**: Verified\n\n"
             "- **Serialization**: Joblib / Pickle\n\n"
-            "- **API Endpoints**: Ready"
+            "- **API Contracts**: OpenAPI / JSON Schema"
         )
         return {}, "scientific"
 

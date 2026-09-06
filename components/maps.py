@@ -59,14 +59,12 @@ def render_spatial_analytics(pipeline_bundle, filters=None):
     elif filters and filters.get("Region") == "Southern India (Peninsular)":
         df_map = df_map[df_map["Region"] == "Southern India"]
 
-    # Choose mapbox style
-    map_style = "carto-positron"
-    if filters and filters.get("Theme") == "OpenStreetMap (Standard)":
-        map_style = "open-street-map"
-    elif filters and filters.get("Theme") == "Stamen Terrain / Topo":
-        map_style = "stamen-terrain"
+    # Choose mapbox style with free OpenStreetMap tiles (NO API key required)
+    map_style = "open-street-map"
+    if filters and "White" in filters.get("Theme", ""):
+        map_style = "white-bg"
 
-    # Beautiful Plotly Scatter Mapbox with real India map terrain
+    # Plotly Scatter Mapbox with real India map terrain
     fig_map = px.scatter_mapbox(
         df_map,
         lat="Latitude",
@@ -106,8 +104,8 @@ def render_spatial_analytics(pipeline_bundle, filters=None):
     with c1:
         st.markdown(
             """
-            <div class="air-card-highlight">
-                <div style="font-size: 16px; font-weight: 700; color: #DC2626; margin-bottom: 6px;">🔴 Indo-Gangetic Basin Corridor (High Vulnerability)</div>
+            <div style="background:#FFF1F2; border:1px solid #FECDD3; border-radius:12px; padding:16px;">
+                <div style="font-size: 15.5px; font-weight: 700; color: #DC2626; margin-bottom: 6px;">🔴 Indo-Gangetic Basin Corridor (High Vulnerability)</div>
                 <div style="font-size: 13.5px; color: #475569; line-height: 1.55;">
                     • <b>Key Cities</b>: Delhi NCR, Lucknow, Patna, Kanpur, Varanasi, Gurugram.<br>
                     • <b>Meteorological Trap</b>: Landlocked topography bounded by the Himalayas prevents zonal dispersion during winter high-pressure systems.<br>
@@ -120,8 +118,8 @@ def render_spatial_analytics(pipeline_bundle, filters=None):
     with c2:
         st.markdown(
             """
-            <div class="air-card-highlight">
-                <div style="font-size: 16px; font-weight: 700; color: #10B981; margin-bottom: 6px;">🟢 Peninsular & Coastal Corridors (High Dispersion)</div>
+            <div style="background:#ECFDF5; border:1px solid #A7F3D0; border-radius:12px; padding:16px;">
+                <div style="font-size: 15.5px; font-weight: 700; color: #059669; margin-bottom: 6px;">🟢 Peninsular & Coastal Corridors (High Dispersion)</div>
                 <div style="font-size: 13.5px; color: #475569; line-height: 1.55;">
                     • <b>Key Cities</b>: Thiruvananthapuram, Kochi, Chennai, Bengaluru, Hyderabad.<br>
                     • <b>Ventilation Mechanism</b>: Continuous maritime land-sea breezes and high plateau elevations facilitate vertical pollutant mixing.<br>

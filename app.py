@@ -26,11 +26,11 @@ from components.overview import render_overview
 from components.analytics import render_analytics
 from components.prediction import render_prediction_page
 from components.maps import render_spatial_analytics
-from components.diagnostics import render_explainability, render_system_page, render_about_page
+from components.diagnostics import render_explainability, render_notebooks_page, render_system_page, render_about_page
 from components.reports import render_reports
 
 # 5. Top Navigation Bar (Robust state management avoiding StreamlitAPIException)
-pages = ["Home", "Analytics", "Prediction", "Spatial", "Explainability", "Architecture", "Downloads", "About"]
+pages = ["Home", "Analytics", "Prediction", "Spatial", "Explainability", "Notebooks", "Architecture", "Downloads", "About"]
 
 # Check if a CTA button requested a page transition
 if "nav_target" in st.session_state and st.session_state["nav_target"] in pages:
@@ -76,6 +76,8 @@ elif selected_page == "Spatial":
     render_spatial_analytics(pipeline_bundle or {}, sidebar_output)
 elif selected_page == "Explainability":
     render_explainability(pipeline_bundle or {}, sidebar_output)
+elif selected_page == "Notebooks":
+    render_notebooks_page(pipeline_bundle or {})
 elif selected_page == "Architecture":
     render_system_page(pipeline_bundle or {})
 elif selected_page == "Downloads":

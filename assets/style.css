@@ -3,7 +3,7 @@
 
 /* Global Light Blue Tint SaaS Theme */
 :root {
-    --bg-main: #F0F4F8;
+    --bg-main: #F4F7FA;
     --bg-card: #FFFFFF;
     --bg-card-subtle: #F8FAFC;
     --text-primary: #0F172A;
@@ -21,9 +21,8 @@
     --danger-bg: #FEF2F2;
     --border-light: #E2E8F0;
     --border-subtle: #CBD5E1;
-    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
-    --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
-    --shadow-hover: 0 10px 25px -3px rgba(37, 99, 235, 0.08), 0 4px 10px -2px rgba(37, 99, 235, 0.04);
+    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.03);
+    --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.04);
 }
 
 /* Base App Background */
@@ -51,7 +50,7 @@
 [data-testid="stSidebar"] {
     background-color: #FFFFFF !important;
     border-right: 1px solid var(--border-light) !important;
-    box-shadow: 2px 0 12px rgba(15, 23, 42, 0.03) !important;
+    box-shadow: 2px 0 8px rgba(15, 23, 42, 0.02) !important;
 }
 
 [data-testid="stSidebar"] h1, 
@@ -84,7 +83,7 @@
     line-height: 1.5 !important;
 }
 
-/* Fix: All Buttons Must Have Crisp White Text (Including Sidebar Presets) */
+/* All Primary Buttons */
 .stButton > button,
 .stButton > button *,
 [data-testid="stSidebar"] .stButton > button,
@@ -95,7 +94,7 @@
     font-weight: 600 !important;
     font-size: 13.5px !important;
     border: none !important;
-    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25) !important;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2) !important;
     transition: all 0.2s ease !important;
 }
 
@@ -105,11 +104,11 @@
 [data-testid="stSidebar"] .stButton > button:hover * {
     background-color: var(--primary-hover) !important;
     color: #FFFFFF !important;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35) !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
     transform: translateY(-1px) !important;
 }
 
-/* Segmented Control Navigation Navbar with White Text on Active State */
+/* Segmented Control Navigation Navbar */
 [data-testid="stSegmentedControl"] {
     background-color: #FFFFFF !important;
     padding: 6px !important;
@@ -128,7 +127,7 @@
     padding: 8px 18px !important;
     border-radius: 10px !important;
     border: none !important;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transition: all 0.2s ease !important;
 }
 
 [data-testid="stSegmentedControl"] button:hover {
@@ -147,108 +146,76 @@
     box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25) !important;
 }
 
-/* Clean Professional Cards */
-.air-card {
-    background: #FFFFFF;
-    border-radius: 16px;
-    padding: 24px;
-    border: 1px solid var(--border-light);
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    margin-bottom: 16px;
-}
-
-.air-card:hover {
-    box-shadow: var(--shadow-md);
-    border-color: #CBD5E1;
-}
-
-.air-card-highlight {
-    background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
-    border-radius: 16px;
-    padding: 24px;
-    border: 1px solid #DBEAFE;
-    box-shadow: var(--shadow-sm);
-    margin-bottom: 16px;
-}
-
 /* Hero Section Banner */
 .hero-banner {
-    background: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 50%, #EEF2FF 100%);
-    border-radius: 20px;
-    padding: 36px 40px;
+    background: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 60%, #EEF2FF 100%);
+    border-radius: 18px;
+    padding: 32px 36px;
     border: 1px solid #DBEAFE;
-    box-shadow: var(--shadow-md);
-    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
 }
 
 .hero-title {
-    font-size: 40px;
+    font-size: 38px;
     font-weight: 800;
     color: var(--text-primary);
-    letter-spacing: -1px;
+    letter-spacing: -0.8px;
     line-height: 1.15;
     margin-bottom: 6px;
 }
 
 .hero-subtitle {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
     color: var(--primary);
     margin-bottom: 10px;
 }
 
 .hero-tagline {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13.5px;
+    font-weight: 700;
     color: var(--accent);
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 }
 
 .hero-desc {
-    font-size: 14.5px;
+    font-size: 14px;
     color: var(--text-secondary);
     line-height: 1.6;
     max-width: 900px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
-/* Metric KPI Blocks */
-.kpi-container {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 24px;
-}
-
+/* Minimal KPI Indicators */
 .kpi-box {
-    flex: 1;
     background: #FFFFFF;
-    border-radius: 16px;
-    padding: 20px 16px;
+    border-radius: 14px;
+    padding: 18px 14px;
     border: 1px solid var(--border-light);
     box-shadow: var(--shadow-sm);
     text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
 .kpi-box:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    border-color: #BFDBFE;
 }
 
 .kpi-label {
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 700;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.6px;
-    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
 }
 
 .kpi-value {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 800;
     color: var(--primary);
     line-height: 1.1;
@@ -260,56 +227,34 @@
     color: var(--success);
     padding: 4px 12px;
     border-radius: 999px;
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 700;
     border: 1px solid #A7F3D0;
     display: inline-block;
 }
 
-.badge-info {
-    background: var(--primary-light);
-    color: var(--primary);
-    padding: 4px 12px;
-    border-radius: 999px;
-    font-size: 12.5px;
-    font-weight: 700;
-    border: 1px solid #BFDBFE;
-    display: inline-block;
-}
-
-.badge-warning {
-    background: var(--warning-bg);
-    color: var(--warning);
-    padding: 4px 12px;
-    border-radius: 999px;
-    font-size: 12.5px;
-    font-weight: 700;
-    border: 1px solid #FDE68A;
-    display: inline-block;
-}
-
-/* Architecture Flowchart Nodes */
+/* Flowchart Nodes */
 .flow-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: #FFFFFF;
-    padding: 24px;
-    border-radius: 16px;
+    padding: 20px 24px;
+    border-radius: 14px;
     border: 1px solid var(--border-light);
     box-shadow: var(--shadow-sm);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     overflow-x: auto;
 }
 
 .flow-node {
     background: var(--bg-card-subtle);
-    border: 1.5px solid var(--border-light);
-    border-radius: 12px;
-    padding: 14px 16px;
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 12px 14px;
     text-align: center;
     min-width: 120px;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 700;
     color: var(--text-primary);
     transition: all 0.2s ease;
@@ -319,7 +264,6 @@
     border-color: var(--primary);
     background: var(--primary-light);
     color: var(--primary);
-    transform: translateY(-2px);
 }
 
 .flow-node.active,
@@ -327,53 +271,47 @@
     background: #2563EB !important;
     color: #FFFFFF !important;
     border-color: #1D4ED8 !important;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25) !important;
 }
 
 .flow-arrow {
     color: #94A3B8;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 800;
-    padding: 0 8px;
+    padding: 0 6px;
 }
 
 /* Typography Hierarchy */
 .page-title {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 800;
     color: var(--text-primary);
-    letter-spacing: -0.5px;
+    letter-spacing: -0.4px;
     margin-bottom: 4px;
 }
 
 .page-subtitle {
-    font-size: 15px;
+    font-size: 14.5px;
     color: var(--text-secondary);
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .section-heading {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
     color: var(--text-primary);
     margin-top: 1.2rem;
     margin-bottom: 0.8rem;
 }
 
-/* Radio & Checkbox Styling */
-.stRadio > div {
-    gap: 12px !important;
-}
-
 /* Footer Styling */
 .app-footer {
     text-align: center;
     color: var(--text-muted);
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 600;
-    padding: 24px 0 12px 0;
+    padding: 20px 0 10px 0;
     border-top: 1px solid var(--border-light);
-    margin-top: 40px;
+    margin-top: 36px;
 }
 
 /* Hide default streamlit chrome */

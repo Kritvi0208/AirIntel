@@ -266,20 +266,20 @@ def render_explainability(pipeline_bundle, filters=None):
     st.dataframe(pd.DataFrame(consensus_features), use_container_width=True, hide_index=True)
 
 def render_notebooks_page(pipeline_bundle):
-    """Render dedicated Notebooks & Research page featuring the 13-stage roadmap, feature selection scorecard, and benchmark leaderboards."""
+    """Render dedicated Notebooks & Research page featuring the 14-stage roadmap, feature selection scorecard, and benchmark leaderboards."""
     st.markdown('<div class="page-title">Research Methodology & Notebook Deliverables</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-subtitle">Interactive showcase of the 13-stage research progression, feature selection journey, and model benchmark leaderboards.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-subtitle">Interactive showcase of the 14-stage research progression, feature selection journey, and model benchmark leaderboards.</div>', unsafe_allow_html=True)
     
     tab1, tab2, tab3, tab4 = st.tabs([
-        "📓 13-Stage Notebook Roadmap",
+        "📓 14-Stage Notebook Roadmap",
         "⚙️ Feature Engineering & Selection",
         "⚡ Regression Leaderboard",
         "🤖 Classification & Spatial Clustering"
     ])
     
-    # TAB 1: 13-NOTEBOOK ROADMAP TABLE
+    # TAB 1: 14-NOTEBOOK ROADMAP TABLE
     with tab1:
-        st.markdown("#### Complete 13-Stage Notebook Engineering Deliverables")
+        st.markdown("#### Complete 14-Stage Notebook Engineering Deliverables")
         st.caption("Detailed overview of datasets, statistical tests, models, and outputs produced across the research notebooks:")
         
         roadmap_data = [
@@ -295,7 +295,8 @@ def render_notebooks_page(pipeline_bundle):
             {"Notebook": "10_Advanced_Analytics.ipynb", "Stage": "Spatial Intelligence", "Core Technical Deliverables": "Segmented 29 cities into 4 spatial vulnerability archetypes using K-Means, PCA, t-SNE, and built pollution network graph."},
             {"Notebook": "11_Explainability_Model_Diagnostics.ipynb", "Stage": "TreeSHAP Diagnostics", "Core Technical Deliverables": "Computed exact Shapley attributions (E[f(x)] = 112.5), PDP/ICE curves, and permutation feature loss dropouts."},
             {"Notebook": "12_Deployment_Prediction_Engine.ipynb", "Stage": "Pipeline Serialization", "Core Technical Deliverables": "Packaged deployment_pipeline.pkl with sub-45ms CPU latency SLA and dual Scientific/Public contracts."},
-            {"Notebook": "13_Streamlit_Dashboard.ipynb", "Stage": "Production Interface", "Core Technical Deliverables": "Architected single-page routing SaaS analytics platform, interactive maps, and diagnostic exporters."}
+            {"Notebook": "13_Streamlit_Dashboard.ipynb", "Stage": "Production Interface", "Core Technical Deliverables": "Architected single-page routing SaaS analytics platform, interactive maps, and diagnostic exporters."},
+            {"Notebook": "14_MLOps_Reproducibility_Monitoring.ipynb", "Stage": "MLOps & Monitoring", "Core Technical Deliverables": "Implemented MLflow experiment tracking (mlflow.db), DVC data lineage, 5-point Pytest suite, Docker packaging, and Population Stability Index (PSI) drift monitoring."}
         ]
         st.dataframe(pd.DataFrame(roadmap_data), use_container_width=True, hide_index=True)
 

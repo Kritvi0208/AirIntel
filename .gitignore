@@ -35,6 +35,7 @@ lightning_logs/
 data/raw/*
 data/processed/*.csv
 data/processed/*.parquet
+!data/processed/clean_airintel.parquet
 data/external/*
 !data/.gitkeep
 !data/processed/.gitkeep
@@ -51,9 +52,28 @@ models/optimized/*.pkl
 !models/deployment/sample_response.json
 !models/deployment/sample_response_public.json
 
+# Local Tracking & Static Builds
+mlruns/
+mlflow.db
+site/
+scratch/
+node_modules/
+package.json
+package-lock.json
+
+# Temporary Scripts & Presentation Build Artifacts
+Topic35_*
+check_*.ps1
+convert_*.ps1
+generate_*.js
+test_*.pdf
+
 # Streamlit & OS Caches
 .streamlit/secrets.toml
 .DS_Store
 Thumbs.db
 *.tmp
 *.log
+logs/
+.dvc/tmp/
+.dvc/cache/

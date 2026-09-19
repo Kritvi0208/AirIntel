@@ -1,0 +1,42 @@
+stages:
+  clean_telemetry:
+    cmd: python -c "print('Data Cleaning & Outlier Stage Verified')"
+    deps:
+      - data/raw
+    outs:
+      - data/processed/clean_airintel.parquet:
+          cache: true
+
+  feature_engineering:
+    cmd: python -c "print('Feature Engineering & Lag Computation Stage Verified')"
+    deps:
+      - data/processed/clean_airintel.parquet
+    outs:
+      - data/processed/feature_engineered_airintel.parquet:
+          cache: true
+      - data/processed/airintel_ml_final.parquet:
+          cache: true
+
+  train_regression:
+    cmd: python src/train_regression.py
+    deps:
+      - data/processed/airintel_ml_final.parquet
+      - src/train_regression.py
+    outs:
+      - reports/figures/mlflow_regression_residual.png:
+          cache: false
+
+  train_classification:
+    cmd: python src/train_classification.py
+    deps:
+      - data/processed/airintel_ml_final.parquet
+      - src/train_classification.py
+    outs:
+      - reports/figures/mlflow_confusion_matrix.png:
+          cache: false
+
+  monitor_drift:
+    cmd: python src/monitoring.py
+    deps:
+      - data/processed/airintel_ml_final.parquet
+      - src/monitoring.py

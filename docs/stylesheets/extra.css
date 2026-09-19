@@ -1,0 +1,99 @@
+:root {
+  /* Royal Dark Blue for Navigation, Header & Accent */
+  --md-primary-fg-color: #1E3A8A;
+  --md-primary-fg-color--light: #2563EB;
+  --md-primary-fg-color--dark: #172554;
+  --md-accent-fg-color: #2563EB;
+
+  /* Very light pastel blue tint for page background */
+  --md-default-bg-color: #F3F7FC;
+  --md-default-bg-color--light: #F8FAFD;
+  --md-default-bg-color--lighter: #FFFFFF;
+}
+
+/* Royal Dark Blue Header Bar */
+.md-header {
+  background-color: #172554 !important;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.2) !important;
+}
+
+/* Royal Blue Navigation Tabs */
+.md-tabs {
+  background-color: #1E3A8A !important;
+  border-bottom: 1px solid #1D4ED8;
+}
+
+.md-tabs__link {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+}
+
+/* Pastel Blue Page Canvas */
+body, .md-main, .md-container {
+  background-color: #F3F7FC !important;
+}
+
+/* Editorial Content Card on Pastel Canvas */
+.md-content__inner {
+  background-color: #FFFFFF;
+  padding: 32px 38px !important;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 2px 10px rgba(30, 58, 138, 0.04);
+}
+
+/* Sidebar styling */
+.md-sidebar__inner {
+  padding-top: 16px;
+}
+
+.md-nav__link--active {
+  color: #1E3A8A !important;
+  font-weight: 700 !important;
+}
+
+/* Image Showcase Cards */
+.doc-image-card {
+  background: #FFFFFF;
+  border: 1px solid #DBEAFE;
+  border-radius: 10px;
+  padding: 14px;
+  margin: 22px 0;
+  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.06);
+  text-align: center;
+}
+
+.doc-image-card img {
+  border-radius: 6px;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.doc-image-caption {
+  font-size: 12.5px;
+  color: #475569;
+  margin-top: 10px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Tables styling */
+.md-typeset table:not([class]) {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #E2E8F0;
+  background-color: #FFFFFF;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: #EFF6FF;
+  color: #1E3A8A;
+  font-weight: 700;
+}
+
+/* Code blocks */
+.md-typeset pre > code {
+  border-radius: 8px;
+}

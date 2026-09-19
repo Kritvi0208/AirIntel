@@ -1,0 +1,60 @@
+site_name: "AirIntel: National Atmospheric Intelligence Platform"
+site_description: "Comprehensive Scientific Documentation, Atmospheric Physics, MLOps Architecture, and API Reference for AirIntel."
+site_author: "Ritvika (Indian Institute of Technology BHU)"
+site_url: "http://localhost:8000"
+repo_url: "https://github.com/Kritvi0208/AirIntel"
+repo_name: "Kritvi0208/AirIntel"
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - "Overview": index.md
+  - "Atmospheric Physics & Data": methodology.md
+  - "14-Stage Research Journey": journey.md
+  - "Model Zoo & Benchmarks": models.md
+  - "TreeSHAP & Spatial Analytics": explainability.md
+  - "MLOps, Drift & CI/CD": mlops.md
+  - "API & Serving Reference": api_reference.md

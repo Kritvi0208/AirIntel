@@ -158,11 +158,22 @@ def render_eda_statistics(pipeline_bundle, filters=None):
             if df is not None and "PM2.5" in df.columns and "AQI" in df.columns:
                 sample_pts = df[["PM2.5", "AQI"]].dropna().sample(min(400, len(df)), random_state=42)
                 fig_scat = px.scatter(
-                    sample_pts, x="PM2.5", y="AQI", trendline="ols",
+                    sample_pts, x="PM2.5", y="AQI",
                     title="PM2.5 ↔ US AQI (r ≈ 0.92)",
                     color_discrete_sequence=['#2563EB'],
                     labels={"PM2.5": "PM2.5 Concentration (µg/m³)", "AQI": "US AQI"}
                 )
+                try:
+                    x_pts = sample_pts["PM2.5"].values
+                    y_pts = sample_pts["AQI"].values
+                    m_fit, b_fit = np.polyfit(x_pts, y_pts, 1)
+                    x_line = np.linspace(x_pts.min(), x_pts.max(), 50)
+                    fig_scat.add_trace(go.Scatter(
+                        x=x_line, y=m_fit * x_line + b_fit, mode="lines",
+                        name="OLS Trendline", line=dict(color="#DC2626", width=2.5)
+                    ))
+                except Exception:
+                    pass
                 apply_editorial_chart_theme(fig_scat, height=340)
                 st.plotly_chart(fig_scat, use_container_width=True, theme=None)
             st.info("PM2.5 ↔ US AQI (r ≈ 0.92): Fine particulate matter is the single most dominant driver of air quality degradation across Indian urban centers.")
@@ -194,11 +205,22 @@ def render_eda_statistics(pipeline_bundle, filters=None):
             if df is not None and "Temp" in df.columns and "AQI" in df.columns:
                 sample_w = df[["Temp", "AQI"]].dropna().sample(min(350, len(df)), random_state=42)
                 fig_temp = px.scatter(
-                    sample_w, x="Temp", y="AQI", trendline="ols",
+                    sample_w, x="Temp", y="AQI",
                     title="Temperature vs AQI (Inversion Effect)",
                     color_discrete_sequence=['#DC2626'],
                     labels={"Temp": "Surface Temperature (°C)", "AQI": "US AQI"}
                 )
+                try:
+                    xt_pts = sample_w["Temp"].values
+                    yt_pts = sample_w["AQI"].values
+                    mt_fit, bt_fit = np.polyfit(xt_pts, yt_pts, 1)
+                    xt_line = np.linspace(xt_pts.min(), xt_pts.max(), 50)
+                    fig_temp.add_trace(go.Scatter(
+                        x=xt_line, y=mt_fit * xt_line + bt_fit, mode="lines",
+                        name="Inversion Trend", line=dict(color="#2563EB", width=2.5)
+                    ))
+                except Exception:
+                    pass
                 apply_editorial_chart_theme(fig_temp, height=340)
                 st.plotly_chart(fig_temp, use_container_width=True, theme=None)
             st.info("Inverse Relationship: Low surface winter temperatures suppress vertical mixing heights, compressing particulate matter near breathing level.")

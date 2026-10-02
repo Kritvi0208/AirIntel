@@ -3,16 +3,16 @@
 
 /* Global Light Blue Tint SaaS Theme */
 :root {
-    --bg-main: #F4F7FA;
+    --bg-main: #F0F6FD; /* Light pastel blue tint */
     --bg-card: #FFFFFF;
     --bg-card-subtle: #F8FAFC;
     --text-primary: #0F172A;
-    --text-secondary: #475569;
+    --text-secondary: #334155;
     --text-muted: #64748B;
-    --primary: #2563EB;
-    --primary-hover: #1D4ED8;
+    --primary: #1D4ED8; /* Royal Blue */
+    --primary-hover: #1E40AF;
     --primary-light: #EFF6FF;
-    --accent: #4F46E5;
+    --accent: #4338CA;
     --success: #10B981;
     --success-bg: #ECFDF5;
     --warning: #F59E0B;
@@ -107,6 +107,79 @@
     color: #FFFFFF !important;
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28) !important;
     transform: translateY(-1px) !important;
+}
+
+/* ==========================================================================
+   GLOBAL FORM CONTROLS: SELECTBOXES & INPUTS (ELIMINATING ALL BLACK BOXES)
+   ========================================================================== */
+div[data-testid="stSelectbox"] div[data-baseweb="select"],
+div[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+div[data-baseweb="select"],
+div[data-baseweb="select"] > div,
+[data-testid="stSidebar"] div[data-baseweb="select"],
+[data-testid="stSidebar"] div[data-baseweb="select"] > div {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    border: 1px solid #CBD5E1 !important;
+    border-radius: 9px !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+}
+
+div[data-baseweb="select"]:hover,
+div[data-baseweb="select"] > div:hover {
+    border-color: #1D4ED8 !important;
+}
+
+/* Selectbox inner text and values */
+div[data-baseweb="select"] span,
+div[data-baseweb="select"] div,
+div[data-baseweb="select"] p,
+[data-testid="stSidebar"] div[data-baseweb="select"] span,
+[data-testid="stSidebar"] div[data-baseweb="select"] div {
+    color: #0F172A !important;
+    font-weight: 600 !important;
+}
+
+div[data-baseweb="select"] svg,
+div[data-baseweb="select"] svg path {
+    fill: #475569 !important;
+}
+
+/* Dropdown popover list items */
+div[data-baseweb="popover"],
+div[data-baseweb="popover"] > div,
+ul[data-baseweb="menu"],
+div[data-baseweb="menu"] {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12) !important;
+}
+
+li[data-baseweb="menu-item"],
+li[data-baseweb="menu-item"] * {
+    background-color: #FFFFFF !important;
+    color: #0F172A !important;
+    font-size: 13px !important;
+}
+
+li[data-baseweb="menu-item"]:hover,
+li[data-baseweb="menu-item"]:hover * {
+    background-color: #EFF6FF !important;
+    color: #1D4ED8 !important;
+}
+
+/* Number inputs and text inputs */
+div[data-testid="stNumberInput"] input,
+div[data-testid="stTextInput"] input {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    border: 1px solid #CBD5E1 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
 }
 
 /* Sleek Royal Dark Blue Floating Navbar */

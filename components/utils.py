@@ -72,3 +72,36 @@ def get_verified_metric(table_name, filter_col, filter_val, target_col, fallback
         if not row.empty:
             return row.iloc[0][target_col]
     return fallback
+
+def apply_editorial_chart_theme(fig, height=340, title_size=13):
+    """Enforces high-contrast, crisp typography and clean scientific styling on any Plotly figure."""
+    fig.update_layout(
+        template="plotly_white",
+        height=height,
+        margin=dict(l=15, r=15, t=42, b=15),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(color="#0F172A", family="Plus Jakarta Sans, Inter, sans-serif"),
+        title_font=dict(color="#0F172A", size=title_size, family="Plus Jakarta Sans, Inter, sans-serif"),
+        xaxis=dict(
+            title_font=dict(color="#334155", size=12),
+            tickfont=dict(color="#475569", size=11),
+            gridcolor="#E2E8F0",
+            linecolor="#CBD5E1",
+            zerolinecolor="#CBD5E1"
+        ),
+        yaxis=dict(
+            title_font=dict(color="#334155", size=12),
+            tickfont=dict(color="#475569", size=11),
+            gridcolor="#E2E8F0",
+            linecolor="#CBD5E1",
+            zerolinecolor="#CBD5E1"
+        ),
+        legend=dict(
+            font=dict(color="#334155", size=11),
+            bgcolor="rgba(255, 255, 255, 0.9)",
+            bordercolor="#CBD5E1",
+            borderwidth=1
+        )
+    )
+    return fig

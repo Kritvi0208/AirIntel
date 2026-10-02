@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
 from pathlib import Path
-from components.utils import load_table, load_clean_dataset
+from components.utils import load_table, load_clean_dataset, apply_editorial_chart_theme
 
 def render_explainability_spatial(pipeline_bundle, filters=None):
     """Render Stage 8: Explainability & Spatial Intelligence (Merged diagnostics & visual finale)."""
@@ -41,15 +41,9 @@ def render_explainability_spatial(pipeline_bundle, filters=None):
                     color_continuous_scale="Blues",
                     labels={"Regression_Permutation": "Loss Increase (Permutation Drop)", "Feature_Clean": "Feature"}
                 )
-                fig_reg_perm.update_layout(
-                    plot_bgcolor="#FFFFFF",
-                    paper_bgcolor="#FFFFFF",
-                    margin=dict(l=10, r=10, t=10, b=10),
-                    height=320,
-                    yaxis={'categoryorder': 'total ascending'},
-                    coloraxis_showscale=False
-                )
-                st.plotly_chart(fig_reg_perm, use_container_width=True)
+                apply_editorial_chart_theme(fig_reg_perm, height=320)
+                fig_reg_perm.update_layout(yaxis={'categoryorder': 'total ascending'}, coloraxis_showscale=False)
+                st.plotly_chart(fig_reg_perm, use_container_width=True, theme=None)
                 
             with p_col2:
                 st.markdown("<div style='font-size:13px; font-weight:700; color:#1E293B; margin-bottom:8px;'>Classification Permutation Drop (Top 10)</div>", unsafe_allow_html=True)
@@ -63,15 +57,9 @@ def render_explainability_spatial(pipeline_bundle, filters=None):
                     color_continuous_scale="Purples",
                     labels={"Classification_Permutation": "Accuracy Drop", "Feature_Clean": "Feature"}
                 )
-                fig_cls_perm.update_layout(
-                    plot_bgcolor="#FFFFFF",
-                    paper_bgcolor="#FFFFFF",
-                    margin=dict(l=10, r=10, t=10, b=10),
-                    height=320,
-                    yaxis={'categoryorder': 'total ascending'},
-                    coloraxis_showscale=False
-                )
-                st.plotly_chart(fig_cls_perm, use_container_width=True)
+                apply_editorial_chart_theme(fig_cls_perm, height=320)
+                fig_cls_perm.update_layout(yaxis={'categoryorder': 'total ascending'}, coloraxis_showscale=False)
+                st.plotly_chart(fig_cls_perm, use_container_width=True, theme=None)
         
         st.markdown('<div class="hairline-divider"></div>', unsafe_allow_html=True)
         
@@ -91,15 +79,9 @@ def render_explainability_spatial(pipeline_bundle, filters=None):
                 color_continuous_scale=["#10B981", "#F59E0B", "#EF4444"],
                 labels={"Mean_Absolute_Error": "Test MAE (US AQI)", "City": "Monitoring Center"}
             )
-            fig_err.update_layout(
-                plot_bgcolor="#FFFFFF",
-                paper_bgcolor="#FFFFFF",
-                margin=dict(l=10, r=10, t=10, b=10),
-                height=340,
-                xaxis_tickangle=-45,
-                coloraxis_showscale=False
-            )
-            st.plotly_chart(fig_err, use_container_width=True)
+            apply_editorial_chart_theme(fig_err, height=340)
+            fig_err.update_layout(xaxis_tickangle=-45, coloraxis_showscale=False)
+            st.plotly_chart(fig_err, use_container_width=True, theme=None)
             
             st.markdown("<div style='height: 14px;'></div>", unsafe_allow_html=True)
             

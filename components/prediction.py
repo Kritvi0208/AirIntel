@@ -316,7 +316,7 @@ def render_prediction_page(input_payload, prediction_mode_arg, pipeline_bundle):
                 }
             ))
             fig_gauge.update_layout(height=200, margin=dict(l=10, r=10, t=10, b=10), paper_bgcolor='rgba(0,0,0,0)')
-            st.plotly_chart(fig_gauge, use_container_width=True)
+            st.plotly_chart(fig_gauge, use_container_width=True, theme=None)
 
             # Real-Time TreeSHAP Waterfall Chart (Dedicated Attribution Palette)
             st.markdown("##### Real-Time TreeSHAP Decision Waterfall")
@@ -345,8 +345,15 @@ def render_prediction_page(input_payload, prediction_mode_arg, pipeline_bundle):
                 color="Direction",
                 color_discrete_map=metric_bar_palette
             )
-            fig_shap.update_layout(height=220, margin=dict(l=10, r=10, t=10, b=10), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-            st.plotly_chart(fig_shap, use_container_width=True)
+            fig_shap.update_layout(
+                template="plotly_white",
+                height=220, 
+                margin=dict(l=10, r=10, t=10, b=10), 
+                paper_bgcolor='rgba(0,0,0,0)', 
+                plot_bgcolor='rgba(0,0,0,0)',
+                font=dict(color='#0F172A', family='Plus Jakarta Sans, sans-serif')
+            )
+            st.plotly_chart(fig_shap, use_container_width=True, theme=None)
 
             # Dynamic Recommended Precautions (Fills extra vertical space directly beneath impact chart)
             prec = get_aqi_precautions(aqi_pred)
@@ -496,7 +503,7 @@ def render_prediction_page(input_payload, prediction_mode_arg, pipeline_bundle):
                 }
             ))
             fig_pub_gauge.update_layout(height=190, margin=dict(l=10, r=10, t=10, b=10), paper_bgcolor='rgba(0,0,0,0)')
-            st.plotly_chart(fig_pub_gauge, use_container_width=True)
+            st.plotly_chart(fig_pub_gauge, use_container_width=True, theme=None)
 
             # Atmospheric Weather Attribution (Dedicated Attribution Palette)
             st.markdown("##### Atmospheric Influence Decomposition")
@@ -519,8 +526,15 @@ def render_prediction_page(input_payload, prediction_mode_arg, pipeline_bundle):
                 color="Effect",
                 color_discrete_map=metric_bar_palette
             )
-            fig_pub_bar.update_layout(height=210, margin=dict(l=10, r=10, t=10, b=10), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-            st.plotly_chart(fig_pub_bar, use_container_width=True)
+            fig_pub_bar.update_layout(
+                template="plotly_white",
+                height=210, 
+                margin=dict(l=10, r=10, t=10, b=10), 
+                paper_bgcolor='rgba(0,0,0,0)', 
+                plot_bgcolor='rgba(0,0,0,0)',
+                font=dict(color='#0F172A', family='Plus Jakarta Sans, sans-serif')
+            )
+            st.plotly_chart(fig_pub_bar, use_container_width=True, theme=None)
 
             # Dynamic Recommended Precautions (Fills extra vertical space directly beneath impact chart)
             prec_pub = get_aqi_precautions(pub_aqi_pred)

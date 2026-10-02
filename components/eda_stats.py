@@ -3,7 +3,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
-from components.utils import load_clean_dataset, load_table
+from components.utils import load_clean_dataset, load_table, apply_editorial_chart_theme
 
 def render_eda_statistics(pipeline_bundle, filters=None):
     """Render Stage 3: EDA & Statistical Intelligence (Visually rich analytical discoveries)."""
@@ -58,8 +58,8 @@ def render_eda_statistics(pipeline_bundle, filters=None):
                     color_discrete_sequence=['#2563EB'],
                     labels={'value': 'US AQI Value'}
                 )
-                fig_aqi.update_layout(height=340, margin=dict(l=10, r=10, t=35, b=10), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-                st.plotly_chart(fig_aqi, use_container_width=True)
+                apply_editorial_chart_theme(fig_aqi, height=340)
+                st.plotly_chart(fig_aqi, use_container_width=True, theme=None)
             st.info("Bimodal Distribution: Clear separation between clean monsoon baseline modes (AQI 0–50) and severe winter inversion stagnation peaks (> 200).")
             
         with c2:
@@ -73,8 +73,8 @@ def render_eda_statistics(pipeline_bundle, filters=None):
                     color_discrete_sequence=['#DC2626'],
                     labels={'value': 'PM2.5 (µg/m³)'}
                 )
-                fig_pm25.update_layout(height=340, margin=dict(l=10, r=10, t=35, b=10), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-                st.plotly_chart(fig_pm25, use_container_width=True)
+                apply_editorial_chart_theme(fig_pm25, height=340)
+                st.plotly_chart(fig_pm25, use_container_width=True, theme=None)
             st.info("Particulate Load: PM2.5 exhibits extreme positive skewness, with post-monsoon crop burning spikes exceeding 300 µg/m³.")
 
         c3, c4 = st.columns(2)
@@ -89,8 +89,8 @@ def render_eda_statistics(pipeline_bundle, filters=None):
                     color_discrete_sequence=['#0D9488'],
                     labels={'value': 'PM10 (µg/m³)'}
                 )
-                fig_pm10.update_layout(height=340, margin=dict(l=10, r=10, t=35, b=10), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-                st.plotly_chart(fig_pm10, use_container_width=True)
+                apply_editorial_chart_theme(fig_pm10, height=340)
+                st.plotly_chart(fig_pm10, use_container_width=True, theme=None)
         with c4:
             if df is not None and "NO2" in df.columns:
                 df_no2 = df[(df["NO2"] >= 0) & (df["NO2"] <= 150)]["NO2"].dropna()
@@ -102,8 +102,8 @@ def render_eda_statistics(pipeline_bundle, filters=None):
                     color_discrete_sequence=['#6366F1'],
                     labels={'value': 'NO2 (µg/m³)'}
                 )
-                fig_no2.update_layout(height=340, margin=dict(l=10, r=10, t=35, b=10), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-                st.plotly_chart(fig_no2, use_container_width=True)
+                apply_editorial_chart_theme(fig_no2, height=340)
+                st.plotly_chart(fig_no2, use_container_width=True, theme=None)
 
     # 2. TEMPORAL PATTERNS
     with tab_time:
@@ -124,8 +124,8 @@ def render_eda_statistics(pipeline_bundle, filters=None):
                 title="Diurnal Curve: Morning Rush Peak & Nocturnal Inversion Peak",
                 color_discrete_sequence=['#2563EB']
             )
-            fig_hour.update_layout(height=340, margin=dict(l=10, r=10, t=35, b=10), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-            st.plotly_chart(fig_hour, use_container_width=True)
+            apply_editorial_chart_theme(fig_hour, height=340)
+            st.plotly_chart(fig_hour, use_container_width=True, theme=None)
             st.info("Bimodal Diurnal Behavior: 1) Morning rush-hour traffic peak (08:00–10:00), 2) Afternoon solar convective boundary layer expansion (13:00–16:00), and 3) Nighttime thermal inversion trapping (20:00–23:00).")
 
         with t2:
@@ -140,8 +140,9 @@ def render_eda_statistics(pipeline_bundle, filters=None):
                 color_discrete_map={"Weekday (Mon-Fri)": "#EF4444", "Weekend (Sat-Sun)": "#10B981"},
                 text_auto='.1f', title="Anthropogenic Weekend Emission Drop (~11%)"
             )
-            fig_wk.update_layout(height=340, margin=dict(l=10, r=10, t=35, b=10), showlegend=False, paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-            st.plotly_chart(fig_wk, use_container_width=True)
+            apply_editorial_chart_theme(fig_wk, height=340)
+            fig_wk.update_layout(showlegend=False)
+            st.plotly_chart(fig_wk, use_container_width=True, theme=None)
             st.info("Weekend Reduction: Quantified an ~11% decline in weekend AQI due to reduced commercial diesel freight and industrial activity.")
 
     # 3. POLLUTANT DYNAMICS
@@ -162,8 +163,8 @@ def render_eda_statistics(pipeline_bundle, filters=None):
                     color_discrete_sequence=['#2563EB'],
                     labels={"PM2.5": "PM2.5 Concentration (µg/m³)", "AQI": "US AQI"}
                 )
-                fig_scat.update_layout(height=340, margin=dict(l=10, r=10, t=35, b=10), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-                st.plotly_chart(fig_scat, use_container_width=True)
+                apply_editorial_chart_theme(fig_scat, height=340)
+                st.plotly_chart(fig_scat, use_container_width=True, theme=None)
             st.info("PM2.5 ↔ US AQI (r ≈ 0.92): Fine particulate matter is the single most dominant driver of air quality degradation across Indian urban centers.")
 
         with p2:
@@ -178,8 +179,8 @@ def render_eda_statistics(pipeline_bundle, filters=None):
                     text_auto='.2f',
                     title="Criteria Pollutant Correlation Matrix"
                 )
-                fig_corr.update_layout(height=340, margin=dict(l=10, r=10, t=35, b=10), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-                st.plotly_chart(fig_corr, use_container_width=True)
+                apply_editorial_chart_theme(fig_corr, height=340)
+                st.plotly_chart(fig_corr, use_container_width=True, theme=None)
             else:
                 st.write("Correlation matrix artifact loaded.")
 
@@ -198,8 +199,8 @@ def render_eda_statistics(pipeline_bundle, filters=None):
                     color_discrete_sequence=['#DC2626'],
                     labels={"Temp": "Surface Temperature (°C)", "AQI": "US AQI"}
                 )
-                fig_temp.update_layout(height=340, margin=dict(l=10, r=10, t=35, b=10), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-                st.plotly_chart(fig_temp, use_container_width=True)
+                apply_editorial_chart_theme(fig_temp, height=340)
+                st.plotly_chart(fig_temp, use_container_width=True, theme=None)
             st.info("Inverse Relationship: Low surface winter temperatures suppress vertical mixing heights, compressing particulate matter near breathing level.")
 
         with w2:
@@ -212,8 +213,8 @@ def render_eda_statistics(pipeline_bundle, filters=None):
                     color_continuous_scale="Tealgrn", text_auto='.1f',
                     title="Seasonal Particulate Washout (~75% Drop in Monsoon)"
                 )
-                fig_mon.update_layout(height=340, margin=dict(l=10, r=10, t=35, b=10), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-                st.plotly_chart(fig_mon, use_container_width=True)
+                apply_editorial_chart_theme(fig_mon, height=340)
+                st.plotly_chart(fig_mon, use_container_width=True, theme=None)
             st.info("Precipitation Washout: Continuous rainfall scavenging during July–August drives an immediate ~75% reduction in particulate load nationwide.")
 
     # 5. STATISTICAL TESTS

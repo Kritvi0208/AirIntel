@@ -109,49 +109,96 @@
     transform: translateY(-1px) !important;
 }
 
-/* Segmented Control Navigation Navbar - Guaranteed Responsive & Visible */
-[data-testid="stSegmentedControl"] {
-    background-color: #FFFFFF !important;
-    padding: 6px 8px !important;
-    border-radius: 12px !important;
-    border: 1px solid var(--border-light) !important;
-    box-shadow: var(--shadow-sm) !important;
-    margin-bottom: 1.5rem !important;
+/* Sleek Royal Dark Blue Floating Navbar */
+[data-testid="stSegmentedControl"],
+[data-testid="stSegmentedControl"] > div,
+[data-testid="stSegmentedControl"] [role="radiogroup"] {
+    background: #0B192C !important; /* Deep Royal Navy aesthetic */
+    padding: 6px 10px !important;
+    border-radius: 14px !important;
+    border: 1px solid #1E3E62 !important;
+    box-shadow: 0 4px 20px rgba(11, 25, 44, 0.15) !important;
     display: flex !important;
     justify-content: flex-start !important;
+    align-items: center !important;
     overflow-x: auto !important;
     white-space: nowrap !important;
     scrollbar-width: thin !important;
     width: 100% !important;
+    margin-bottom: 1.5rem !important;
 }
 
-[data-testid="stSegmentedControl"] button {
-    font-size: 12.5px !important;
+[data-testid="stSegmentedControl"] button,
+[data-testid="stSegmentedControl"] [role="radiogroup"] button,
+[data-testid="stSegmentedControl"] [role="radiogroup"] label {
+    font-size: 13px !important;
     font-weight: 600 !important;
-    color: var(--text-secondary) !important;
-    padding: 7px 14px !important;
-    border-radius: 8px !important;
+    color: #94A3B8 !important; /* Crisp readable slate */
+    background: transparent !important;
     border: none !important;
+    outline: none !important;
+    padding: 8px 16px !important;
+    border-radius: 9px !important;
     white-space: nowrap !important;
     flex-shrink: 0 !important;
-    transition: all 0.18s ease !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-[data-testid="stSegmentedControl"] button:hover {
-    color: var(--primary) !important;
-    background-color: var(--primary-light) !important;
+[data-testid="stSegmentedControl"] button:hover,
+[data-testid="stSegmentedControl"] [role="radiogroup"] button:hover,
+[data-testid="stSegmentedControl"] [role="radiogroup"] label:hover {
+    color: #FFFFFF !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
+/* Active Selected Tab: Vibrant Royal Blue Pill with White Text (Eliminating Default Red Border) */
 [data-testid="stSegmentedControl"] button[aria-checked="true"],
 [data-testid="stSegmentedControl"] button[aria-checked="true"] *,
 [data-testid="stSegmentedControl"] button[data-checked="true"],
 [data-testid="stSegmentedControl"] button[data-checked="true"] *,
 [data-testid="stSegmentedControl"] button[aria-selected="true"],
-[data-testid="stSegmentedControl"] button[aria-selected="true"] * {
-    background-color: var(--primary) !important;
+[data-testid="stSegmentedControl"] button[aria-selected="true"] *,
+[data-testid="stSegmentedControl"] [role="radiogroup"] label[data-checked="true"],
+[data-testid="stSegmentedControl"] [role="radiogroup"] label[data-checked="true"] *,
+[data-testid="stSegmentedControl"] [role="radiogroup"] label:has(input:checked),
+[data-testid="stSegmentedControl"] [role="radiogroup"] label:has(input:checked) * {
+    background: #1D4ED8 !important; /* Royal Blue */
     color: #FFFFFF !important;
-    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25) !important;
     font-weight: 700 !important;
+    box-shadow: 0 2px 10px rgba(29, 78, 216, 0.45) !important;
+    border: none !important;
+    outline: none !important;
+}
+
+/* High-Contrast Sub-Navigation Tabs */
+div[data-testid="stTabs"] {
+    margin-top: 0.8rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+div[data-testid="stTabs"] button[data-baseweb="tab"] {
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    color: #334155 !important; /* High-contrast readable slate (NOT faint grey) */
+    background: transparent !important;
+    border: none !important;
+    padding: 10px 18px !important;
+    transition: all 0.15s ease !important;
+}
+
+div[data-testid="stTabs"] button[data-baseweb="tab"]:hover {
+    color: #1D4ED8 !important;
+}
+
+div[data-testid="stTabs"] button[data-baseweb="tab"][aria-selected="true"] {
+    color: #1D4ED8 !important; /* Royal Blue */
+    font-weight: 800 !important;
+    border-bottom: 3px solid #1D4ED8 !important; /* Royal Blue underline instead of default red! */
+}
+
+/* Override the default red active tab indicator */
+div[data-testid="stTabs"] [data-baseweb="tab-highlight"] {
+    background-color: #1D4ED8 !important;
 }
 
 /* Hero Section Banner */

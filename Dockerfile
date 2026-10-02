@@ -36,6 +36,7 @@ COPY models/deployment/ models/deployment/
 COPY reports/ reports/
 COPY src/ src/
 COPY tests/ tests/
+COPY .streamlit/ .streamlit/
 COPY data/processed/clean_airintel.parquet data/processed/clean_airintel.parquet
 RUN mkdir -p logs
 

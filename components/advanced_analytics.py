@@ -2,7 +2,7 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 import numpy as np
-from components.utils import load_table
+from components.utils import load_table, apply_editorial_chart_theme
 
 def render_advanced_analytics(pipeline_bundle, filters=None):
     """Render Stage 6: Advanced Analytics (Selected interesting results from Notebook 10)."""
@@ -70,8 +70,8 @@ def render_advanced_analytics(pipeline_bundle, filters=None):
             df_pca, x="PCA1", y="PCA2", color="US_AQI", hover_name="City",
             color_continuous_scale="Reds", title="PCA Latent Projection of Urban Air Profiles (2,500 Sampled Observations)"
         )
-        fig_proj.update_layout(height=400, margin=dict(l=10, r=10, t=35, b=10), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-        st.plotly_chart(fig_proj, use_container_width=True)
+        apply_editorial_chart_theme(fig_proj, height=400)
+        st.plotly_chart(fig_proj, use_container_width=True, theme=None)
 
     st.markdown('<div class="hairline-divider"></div>', unsafe_allow_html=True)
 
@@ -83,8 +83,8 @@ def render_advanced_analytics(pipeline_bundle, filters=None):
             numeric_sim = sim_df.select_dtypes(include=[np.number])
             if not numeric_sim.empty:
                 fig_sim = px.imshow(numeric_sim.head(15), color_continuous_scale="Viridis", title="Cosine Similarity Across Urban Pollution Signatures")
-                fig_sim.update_layout(height=350, margin=dict(l=10, r=10, t=35, b=10))
-                st.plotly_chart(fig_sim, use_container_width=True)
+                apply_editorial_chart_theme(fig_sim, height=350)
+                st.plotly_chart(fig_sim, use_container_width=True, theme=None)
                 
     net_df = load_table("network_metrics_summary.csv")
     if net_df is not None:

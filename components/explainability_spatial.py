@@ -175,33 +175,67 @@ def render_explainability_spatial(pipeline_bundle, filters=None):
                     
             st.caption(f"Displaying station bubble metric: **{metric_label}** (selected via sidebar)")
             
-            fig_map = px.scatter_mapbox(
-                map_data,
-                lat="Latitude",
-                lon="Longitude",
-                hover_name="City",
-                hover_data={target_metric: ":.1f", "Latitude": False, "Longitude": False},
-                color=target_metric,
-                size=target_metric,
-                size_max=22,
-                color_continuous_scale=color_scale,
-                zoom=3.8,
-                center={"lat": 22.5, "lon": 82.0}
-            )
-            
-            fig_map.update_layout(
-                mapbox_style="open-street-map",
-                margin=dict(l=0, r=0, t=0, b=0),
-                height=520,
-                coloraxis_colorbar=dict(
-                    title=metric_label,
-                    thickness=14,
-                    len=0.75,
-                    yanchor="middle",
-                    y=0.5
+            try:
+                if hasattr(px, "scatter_map"):
+                    fig_map = px.scatter_map(
+                        map_data,
+                        lat="Latitude",
+                        lon="Longitude",
+                        hover_name="City",
+                        hover_data={target_metric: ":.1f", "Latitude": False, "Longitude": False},
+                        color=target_metric,
+                        size=target_metric,
+                        size_max=22,
+                        color_continuous_scale=color_scale,
+                        zoom=3.8,
+                        center={"lat": 22.5, "lon": 82.0}
+                    )
+                    fig_map.update_layout(
+                        map_style="open-street-map",
+                        margin=dict(l=0, r=0, t=0, b=0),
+                        height=520,
+                        coloraxis_colorbar=dict(
+                            title=metric_label,
+                            thickness=14,
+                            len=0.75,
+                            yanchor="middle",
+                            y=0.5
+                        )
+                    )
+                else:
+                    fig_map = px.scatter_mapbox(
+                        map_data,
+                        lat="Latitude",
+                        lon="Longitude",
+                        hover_name="City",
+                        hover_data={target_metric: ":.1f", "Latitude": False, "Longitude": False},
+                        color=target_metric,
+                        size=target_metric,
+                        size_max=22,
+                        color_continuous_scale=color_scale,
+                        zoom=3.8,
+                        center={"lat": 22.5, "lon": 82.0}
+                    )
+                    fig_map.update_layout(
+                        mapbox_style="open-street-map",
+                        margin=dict(l=0, r=0, t=0, b=0),
+                        height=520,
+                        coloraxis_colorbar=dict(
+                            title=metric_label,
+                            thickness=14,
+                            len=0.75,
+                            yanchor="middle",
+                            y=0.5
+                        )
+                    )
+                st.plotly_chart(fig_map, use_container_width=True, theme=None)
+            except Exception as map_err:
+                st.info(f"Rendering station telemetry table for 29 CAAQMS stations ({metric_label}):")
+                st.dataframe(
+                    map_data[["City", target_metric, "Latitude", "Longitude"]].sort_values(by=target_metric, ascending=False),
+                    use_container_width=True,
+                    hide_index=True
                 )
-            )
-            st.plotly_chart(fig_map, use_container_width=True)
             
         st.markdown('<div class="hairline-divider"></div>', unsafe_allow_html=True)
         
